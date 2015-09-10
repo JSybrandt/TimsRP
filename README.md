@@ -1,10 +1,10 @@
 # TimsRP
 
-_Unaffiliated with Toms Hardware_
+_Unaffiliated with Tom's Hardware_
 
 ##Goal
 
-To make a role playing form better than _rpol.net_ .
+To make a role playing forum better than _rpol.net_ .
 
 To get *100%* in a web project without trying too hard.
 
@@ -13,4 +13,4 @@ To get *100%* in a web project without trying too hard.
 - Justin Sybrandt
 - Caelan Mayberry
 - Zared _"ZARD"_ Hollabaugh
-- Stuart _Freaky Constantina_ Bowman
+- Stuart _"Freaky Constantina"_ Bowman
