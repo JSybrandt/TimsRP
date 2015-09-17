@@ -1,3 +1,12 @@
+input{
+	width: 100%;
+	font-size: 20;
+}
+
+body{
+	background: #DDDDDD;
+}
+
 .navbar-header{
 	background: linear-gradient(#E53935,#A70C0C);
 }
@@ -22,19 +31,11 @@
 .radiogroup{
 	width: auto;
 	margin:auto;
+	display: inline-block;
 }
 
 .fieldgroup{
 	float: left;
-	width: auto;
+	padding-left: 10px;
+	padding-right: 10px;
 }
-
-input{
-	width: 100%;
-	font-size: 20;
-}
-
-body{
-	background: #DDDDDD;
-}
-
