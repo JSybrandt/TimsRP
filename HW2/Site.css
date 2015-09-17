@@ -29,10 +29,12 @@ body{
 
 .dropdown-menu {
     background: #be0c0c;
+    color: white;
 }
 
 .dropdown-menu >li> a:hover {
     background: #A70C0C;
+    color: white;
 }
 
 #img-header{
@@ -48,6 +50,7 @@ body{
 }
 
 li.open>a.dropdown-toggle {
+    color: white;
     background: #A70C0C !important;
 }
 
