@@ -1,10 +1,15 @@
 input{
+<<<<<<< HEAD
 	width: 100%;
 	font-size: 1em;
+=======
+	width: 75%;
+	font-size: 20;
+>>>>>>> a68b7f529329fd41708eb83dc2caa135906efaba
 }
 
 body{
-	background: #DDDDDD;
+	background: #E7E7E7;
 }
 
 .container-fluid{
@@ -41,13 +46,14 @@ body{
 }
 
 .col-md-4{
-	background: #DDDDDD;
+	background: #E7E7E7;
 	font-family: "Lucida Grande", Georgia, Serif;
 	margin:auto;
+	-webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
 }
 
 #signupform{
-	width: 300px;
+	width: 400px;
 	text-align: center;
 	font-size: 1.3em;
 }
