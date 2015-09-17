@@ -1,11 +1,6 @@
 input{
-<<<<<<< HEAD
-	width: 100%;
-	font-size: 1em;
-=======
 	width: 75%;
-	font-size: 20;
->>>>>>> a68b7f529329fd41708eb83dc2caa135906efaba
+	font-size: 1em;
 }
 
 body{
@@ -84,3 +79,4 @@ li.open>a.dropdown-toggle {
 	padding-left: 10px;
 	padding-right: 10px;
 }
+
