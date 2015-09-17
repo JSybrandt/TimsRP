@@ -7,12 +7,24 @@ body{
 	background: #DDDDDD;
 }
 
+.container-fluid{
+		background: linear-gradient(#E53935,#A70C0C);
+}
+
+.navbar-default .navbar-nav>li>a{
+	color:white;
+}
+.navbar-default .navbar-nav>li>a:hover{
+	color:gray;
+}
+
 .navbar-header{
 	background: linear-gradient(#E53935,#A70C0C);
 }
 
 .navbar-default .navbar-brand{
 	color: #FFFFFF;
+	background: linear-gradient(#E53935,#A70C0C);
 }
 
 #img-header{
