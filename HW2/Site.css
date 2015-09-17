@@ -1,0 +1,40 @@
+.navbar-header{
+	background: linear-gradient(#E53935,#A70C0C);
+}
+#img-header{
+	text-align: center;
+	max-width: 100px;
+}
+
+.col-md-4{
+	background: #DDDDDD;
+	font-family: "Lucida Grande", Georgia, Serif;
+	margin:auto;
+	padding:auto;
+
+}
+
+#signupform{
+	width: 300px;
+	text-align: center;
+	font-size: 1.3em;
+}
+.radiogroup{
+	width: auto;
+	margin:auto;
+}
+
+.fieldgroup{
+	float: left;
+	width: auto;
+}
+
+input{
+	width: 100%;
+	font-size: 20;
+}
+
+body{
+	background: #DDDDDD;
+}
+

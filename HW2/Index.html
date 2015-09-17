@@ -6,6 +6,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Site.css" />
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -72,10 +73,10 @@
     </header>
     <div id="body" class="col-md-8">
         
-		<img src="gameHeader.png" width="75%" class="img-responsive img-center" />
+		<img src="gameHeader.png" width="100%" class="img-responsive img-center" />
 		
     </div>
-	<div class="col-md-4">
+	<div class="col-md-4" id = "signupform">
 		<form>
 		  First name:<br>
 		  <input type="text" name="firstname">
@@ -84,9 +85,16 @@
 		  <input type="text" name="lastname">
 		  <br>
 		  Sex: <br>
-		  <input type="radio" name="sex" value="male"> Male
-		  <input type="radio" name="sex" value="female"> Female
+          <div class="radiogroup">
+              <div class="fieldgroup">
+    		  <input type="radio" name="sex" value="male"> Male
+              </div>
+    		  <div class="fieldgroup">
+              <input type="radio" name="sex" value="female"> Female
+              </div>
+          </div>
 		  <br>
+          <br>
 		  Date of birth:<br>
 		  <input type="date" name="DOB">
 		  <br>
