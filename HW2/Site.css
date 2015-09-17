@@ -28,7 +28,7 @@ body{
 }
 
 .dropdown-menu {
-    background: linear-gradient(#E53935,#A70C0C);
+    background: #be0c0c;
 }
 
 .dropdown-menu >li> a:hover {
