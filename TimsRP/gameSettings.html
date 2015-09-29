@@ -41,7 +41,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Campaign Settings</a></li>
+                        <li><a href="gameSettings.html"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Campaign Settings</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -53,7 +53,7 @@
                                 <li><a href="#">Notification 4</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Login / Register</a></li>
+                        <li><a href="Index.html">Login / Register</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -78,17 +78,17 @@
                         <tr>
                             <td>John Doe</td>
                             <td>Active</td>
-                            <td class="center-text"><a>Remove</a></td>
+                            <td class="center-text"><a class="btn btn-xs btn-danger">Remove</a></td>
                         </tr>
                         <tr>
                             <td>Jane Doe</td>
                             <td>Invited</td>
-                            <td class="center-text"><a>Remove</a></td>
+                            <td class="center-text"><a class="btn btn-xs btn-danger">Remove</a></td>
                         </tr>
                         <tr>
                             <td>Asshole Friend Frank</td>
                             <td>Requested to join</td>
-                            <td class="center-text"><a>Decline</a> / <a>Accept</a></td>
+                            <td class="center-text"><a class="btn btn-xs btn-danger">Decline</a> | <a class="btn btn-xs btn-success">Accept</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -100,13 +100,51 @@
                     <tbody>
                         <tr>
                             <td>Campaign Visibility</td>
-                            <td>Public</td>
-                            <td><a>Change</a></td>
+                            <td>Invite Only</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Change <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Public</a></li>
+                                        <li><a href="#">Invite Only</a></li>
+                                        <li><a href="#">Private</a></li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Game System</td>
                             <td>Legend of the Five Rings</td>
-                            <td><a>Change</a></td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Change <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Legend of the Five Rings</a></li>
+                                        <li><a href="#">Dungeons and Dragons</a></li>
+                                        <li><a href="#">Warhammer 40k</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Notifications</td>
+                            <td>All Messages</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Change <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">All Messages</a></li>
+                                        <li><a href="#">Private Messages Only</a></li>
+                                        <li><a href="#">No Messages</a></li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
 
