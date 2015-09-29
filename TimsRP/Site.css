@@ -132,12 +132,19 @@ li.open > a.dropdown-toggle {
 	padding:2%;
 }
 
-#gameList{
+#gameList, #addPlayerList{
     width:80%;
 }
 
 #gameList th, #gameList td{
     border: solid #AAAAAA 2px;
+    margin:2%;
+    padding:2%;
+    white-space: nowrap;
+}
+
+#addPlayerList th, #addPlayerList td{
+    border: solid #FFFFFF 2px;
     margin:2%;
     padding:2%;
     white-space: nowrap;
@@ -156,6 +163,31 @@ li.open > a.dropdown-toggle {
 	margin:0%;
 	padding:0%;
 	text-align:center;
+}
+
+#newGameField{
+    text-align: center;
+    width:80%;
+}
+
+#addPlayerList{
+    text-align: left;
+}
+#addPlayerList hr{
+    height: 1px;
+    color: lightgray;
+    background-color: lightgray;
+    border: none;
+}
+
+.RPThumb{
+    float:left;
+    margin-right:3%;
+    width:5em;
+}
+
+.gameName div{
+    float:center;
 }
 
 .postContent{
