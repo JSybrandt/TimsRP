@@ -7,7 +7,11 @@ body {
     background: #E7E7E7;
 }
 
-.container-fluid {
+.dropdown-menu > li > a {
+    color: black;
+}
+
+.navbar>.container-fluid {
     background: linear-gradient(#E53935,#A70C0C);
 }
 
@@ -54,6 +58,24 @@ body {
     -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
 }
 
+.col-md-5 {
+    background: #E7E7E7;
+    font-family: "Lucida Grande", Georgia, Serif;
+    margin: auto;
+    -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
+}
+
+.col-md-6 {
+    background: #E7E7E7;
+    font-family: "Lucida Grande", Georgia, Serif;
+    margin: auto;
+    -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,0.5);
+}
+
+.center-text {
+    text-align:center;
+}
+
 li.open > a.dropdown-toggle {
     color: white;
     background: #A70C0C !important;
@@ -69,6 +91,13 @@ li.open > a.dropdown-toggle {
     width: auto;
     margin: auto;
     display: inline-block;
+}
+
+.div-box {
+    padding: 9px 14px;
+    margin-bottom: 14px;
+    background-color: #ffffff;
+    border-radius: 4px;
 }
 
 #submitinfo {
@@ -87,4 +116,54 @@ li.open > a.dropdown-toggle {
     float: left;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#gameRecord {
+	border: solid #ffffff 2px;
+}
+
+#gameRecord th, #gameRecord td{
+	border: solid #ffffff 1px;
+	margin:2%;
+	padding:2%;
+}
+
+#gameHeader *{
+	margin-bottom:2em;
+	display: inline;
+}
+
+#gameHeader h1{
+	margin-left:.5em;
+}
+
+.charData{
+	margin:0%;
+	padding:0%;
+	text-align:center;
+}
+
+.postContent{
+	vertical-align: top;
+	font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+	font-size: 17px;
+}
+
+h1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 28px;
+}
+h2 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+h3 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+#newPost{
+	position:relative;
+	bottom:0px;
+	right:0px;
 }
