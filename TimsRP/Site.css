@@ -81,6 +81,10 @@ li.open > a.dropdown-toggle {
     background: #A70C0C !important;
 }
 
+#inviteName {
+    width: 50%;
+}
+
 #signupform {
     width: 400px;
     text-align: center;
