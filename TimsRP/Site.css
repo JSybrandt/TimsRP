@@ -167,6 +167,7 @@ li.open > a.dropdown-toggle {
 
 #newGameField{
     text-align: center;
+    width:80%;
 }
 
 #addPlayerList{
@@ -177,6 +178,16 @@ li.open > a.dropdown-toggle {
     color: lightgray;
     background-color: lightgray;
     border: none;
+}
+
+.RPThumb{
+    float:left;
+    margin-right:3%;
+    width:5em;
+}
+
+.gameName div{
+    float:center;
 }
 
 .postContent{
