@@ -7,6 +7,10 @@ body {
     background: #E7E7E7;
 }
 
+.dropdown-menu > li > a {
+    color: black;
+}
+
 .navbar>.container-fluid {
     background: linear-gradient(#E53935,#A70C0C);
 }

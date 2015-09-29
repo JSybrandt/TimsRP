@@ -1,0 +1,25 @@
+#Title{
+	font-size: 400%;
+}
+
+#body{
+	text-align:center;
+}
+
+.imagePick{
+	padding: 0px 46.5vw;
+}
+
+.informationForm{
+	padding-left: 30vw;
+	padding-right: 30vw;
+}
+
+.gameTable{
+	width:70vw;
+	padding-left:30vw;
+}
+
+th{
+	align: center
+}
