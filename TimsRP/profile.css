@@ -7,7 +7,7 @@
 }
 
 .imagePick{
-	padding: 0px 46.5vw;
+	padding: 0px 44.5vw;
 }
 
 .informationForm{
@@ -21,5 +21,5 @@
 }
 
 th{
-	align: center
+	text-align: center;
 }
