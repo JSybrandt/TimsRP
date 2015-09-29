@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>User Registration Form</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Site.css" />
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "#mytextarea"
+        });
+    </script>
+	
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Tim's RP</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campaigns <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Campaigns</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> View Open Campaigns</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create Campaign</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Notifications<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <div id="body" class="col-md-8">
+        <h2>New Post</h2>
+        <form action="http://www.randyconnolly.com/tests/process.php" name="regform" id="regform" method="post">
+			<textarea id="mytextarea"></textarea>
+            <button  class="btn btn-success"> Post </button>
+        </form>
+        <br>
+
+		<table id="gameRecord">
+		<tr>
+			<td class="charData"><!--Post Metadata-->
+				<h3>Jeff</h3>
+				<img class="charImg" src="images/p4.jpg"/>
+			</td>
+			<td class="postContent"><!--Post Content-->
+				I throw my ax at the beast!
+				I rolled a 6.
+			</td>
+		</tr>
+		<tr>
+			<td class="charData"><!--Post Metadata-->
+				<h3>Samson</h3>
+				<img class="charImg" src="images/p3.jpg"/>
+			</td>
+			<td class="postContent"><!--Post Content-->
+				I grab my lance, and whisle for my horse, hopefully Bertrude was able to handle the warpigs. I scan the area for a distraction. 12 on perception.
+			</td>
+		</tr>
+		<tr>
+			<td class="charData"><!--Post Metadata-->
+				<h3>Maxwell</h3>
+				<img class="charImg" src="images/p2.jpg"/>
+			</td>
+			<td class="postContent"><!--Post Content-->
+				Aldo, you're lucky that talking is a free action, I grab my staff and start chanting cone of frost. 16 for casting.
+			</td>
+		</tr>
+		<tr>
+			<td class="charData"><!--Post Metadata-->
+				<h3>Aldo</h3>
+				<img class="charImg" src="images/p1.jpg"/>
+			</td>
+			<td class="postContent"><!--Post Content-->
+				Pigs again?! I draw my sword, and yell to the heavens, "GM NEEDS BETTER MOOKS!"
+			</td>
+		</tr>
+		<tr>
+			<td class="charData"><!--Post Metadata-->
+				<h3>GM</h3>
+			</td>
+			<td class="postContent"><!--Post Content-->
+				You all find yourselves in a forest surrounded by angry looking feral pigs. In front of you is the largest warthog you have ever seen. The other animals seem content watching the fight, and form a tight circle around you all.
+			</td>
+		</tr>
+		</table>
+		
+		
+    </div>
+    <div class="col-md-4" id="signupform">
+        <h2>My Games</h2>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
