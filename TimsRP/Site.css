@@ -117,3 +117,53 @@ li.open > a.dropdown-toggle {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+#gameRecord {
+	border: solid #ffffff 2px;
+}
+
+#gameRecord th, #gameRecord td{
+	border: solid #ffffff 1px;
+	margin:2%;
+	padding:2%;
+}
+
+#gameHeader *{
+	margin-bottom:2em;
+	display: inline;
+}
+
+#gameHeader h1{
+	margin-left:.5em;
+}
+
+.charData{
+	margin:0%;
+	padding:0%;
+	text-align:center;
+}
+
+.postContent{
+	vertical-align: top;
+	font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;
+	font-size: 17px;
+}
+
+h1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 28px;
+}
+h2 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+}
+h3 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+}
+
+#newPost{
+	position:relative;
+	bottom:0px;
+	right:0px;
+}
