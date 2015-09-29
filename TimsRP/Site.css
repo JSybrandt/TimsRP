@@ -128,12 +128,19 @@ li.open > a.dropdown-toggle {
 	padding:2%;
 }
 
-#gameList{
+#gameList, #addPlayerList{
     width:80%;
 }
 
 #gameList th, #gameList td{
     border: solid #AAAAAA 2px;
+    margin:2%;
+    padding:2%;
+    white-space: nowrap;
+}
+
+#addPlayerList th, #addPlayerList td{
+    border: solid #FFFFFF 2px;
     margin:2%;
     padding:2%;
     white-space: nowrap;
