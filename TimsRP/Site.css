@@ -132,6 +132,17 @@ li.open > a.dropdown-toggle {
 	padding:2%;
 }
 
+#gameList{
+    width:80%;
+}
+
+#gameList th, #gameList td{
+    border: solid #AAAAAA 2px;
+    margin:2%;
+    padding:2%;
+    white-space: nowrap;
+}
+
 #gameHeader *{
 	margin-bottom:2em;
 	display: inline;
@@ -164,6 +175,11 @@ h2 {
 h3 {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 18px;
+}
+
+h4 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
 
 #newPost{
