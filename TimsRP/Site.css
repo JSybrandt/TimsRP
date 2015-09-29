@@ -165,6 +165,20 @@ li.open > a.dropdown-toggle {
 	text-align:center;
 }
 
+#newGameField{
+    text-align: center;
+}
+
+#addPlayerList{
+    text-align: left;
+}
+#addPlayerList hr{
+    height: 1px;
+    color: lightgray;
+    background-color: lightgray;
+    border: none;
+}
+
 .postContent{
 	vertical-align: top;
 	font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif;

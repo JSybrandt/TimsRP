@@ -65,41 +65,45 @@
     <br/><br/>
     <div id="body" class="container">
         <div class="row">
-            <div class="col-md-5 div-box">
-                <h4><b>Game Name: </b></h4><input type="text" name="gameName"><br/><br/>
-
-                <table id = "addPlayerList">
+            <div class="col-md-5 div-box" id = "newGameField">
+                <h3><b>Game Name: </b></h3><input type="text" name="gameName" style="width:50%"><br/>
+                <h4><b>Description: </b></h4>
+                <textarea name="gamedescription" cols="60" rows="2" placeholder="A brief description of your RP to get players interested and describe the adventure!"></textarea>
+                <br/><br/>
+                <h4><b>Participants: </b></h4><hr>
+                <table id = "addPlayerList" align="center">
                     <thead>
                         <tr>
                             <th class="center-text">Player Name</th>
-                            <th class="center-text">email</th>
+                            <th class="center-text">Email</th>
                             <th class="center-text"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Freaky C.</td>
+                            <td><b>Freaky C.</b></td>
                             <td>Freaky1@gmail.com</td>
                             <td><a class="btn btn-xs btn-danger">Remove</a></td>
                         </tr>
                         <tr>
-                            <td>John Cena</td>
+                            <td><b>John Cena</b></td>
                             <td>ucantseeme@gmail.com</td>
                             <td><a class="btn btn-xs btn-danger">Remove</a></td>
                         </tr>
                         <tr>
-                            <td>Mike Boom</td>
+                            <td><b>Mike Boom</b></td>
                             <td>salt@gmail.com</td>
                             <td><a class="btn btn-xs btn-danger">Remove</a></td>
                         </tr>
                         <tr>
                             <td>
-                            Add Player: <input type="text" name="gameMembers" >    <button id="addMember" class="btn btn-success">Add</button>
+                            Add Player: <input type="text" name="gameMembers" >    <a id="addMember" class="btn btn-s btn-success">Add</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-
+                <br/>
+                <a id="saveNewRP" class="btn btn-xl btn-success">Create my Role Play!</a>
             </div>
         </div>
     </div>
