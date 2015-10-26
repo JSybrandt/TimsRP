@@ -7,7 +7,8 @@
 }
 
 .imagePick{
-	padding: 0px 44.5vw;
+	position: relative;
+	left: 46vw;
 }
 
 .informationForm{
