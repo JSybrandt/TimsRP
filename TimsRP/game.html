@@ -10,7 +10,8 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+	<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+	
 </head>
 <body>
     <header>
@@ -65,9 +66,16 @@
 			<h1>Dr. Wheiz's Zany Island Adventure</h1>	
 		</div>
         <table id="gameRecord">
-		<a href="submitPost.html">
-			<button id="newPost" class="btn btn-success"> New Post </button>
-		</a>
+
+		<button id="new-post-btn" class="btn btn-success"> New Post </button>
+		<div id="new-post-form">
+			<form action="http://www.randyconnolly.com/tests/process.php" name="regform" id="regform" method="post">
+				<textarea id="mytextarea"></textarea>
+				<br>
+				<button  class="btn btn-success" id="submit-post-btn"> Post </button>
+			</form>
+		</div>
+		
 		<tr>
 			<td class="charData"><!--Post Metadata-->
 				<a href="profile.html">
@@ -132,5 +140,7 @@
             </div>
         </div>
     </footer>
+	
+	<script src="game.js"></script>
 </body>
 </html>

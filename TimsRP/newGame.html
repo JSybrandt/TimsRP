@@ -61,7 +61,7 @@
     </header>
     <div id="body" class="container">
         <div class="row">
-            <div class="col-md-5 div-box" id = "newGameField">
+            <div class="div-box" id = "newGameField">
 				<h1><b>Create a new RP</b></h1>
                 <h3><b>Game Name: </b></h3><input type="text" name="gameName" style="width:50%"><br/>
                 <h4><b>Description: </b></h4>
@@ -92,14 +92,12 @@
                             <td>salt@gmail.com</td>
                             <td><a class="btn btn-xs btn-danger">Remove</a></td>
                         </tr>
-                        <tr>
-                            <td>
-                            Add Player: <input type="text" name="gameMembers" >    <a id="addMember" class="btn btn-s btn-success">Add</a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-                <br/>
+				<div id="add-player">
+					<input type="text" name="gameMembers" >  <a id="addMember" class="btn btn-s btn-success">Add Player</a>
+                </div>
+				<br/>
                 <a id="saveNewRP" class="btn btn-xl btn-success">Create my Role Play!</a>
             </div>
         </div>
@@ -111,5 +109,7 @@
             </div>
         </div>
     </footer>
+	
+	
 </body>
 </html>
