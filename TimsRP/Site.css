@@ -167,7 +167,7 @@ li.open > a.dropdown-toggle {
 
 #newGameField{
     text-align: center;
-    width:80%;
+    width:fit;
 }
 
 #addPlayerList{
@@ -218,4 +218,12 @@ h4 {
 	position:relative;
 	bottom:0px;
 	right:0px;
+}
+
+#addPlayerList{
+	width:30%;
+}
+#add-player{
+	margin-left:20%;
+	margin-right:20%;
 }
