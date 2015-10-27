@@ -72,8 +72,8 @@
 		
 		<div class="col-md-12">
 			<h2>My Avatar</h2>
-			<img src="http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png"/>
-			<input type="file" class="imagePick" name="image" />
+			<img id="avatar" src="http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png"/>
+			<input type="file" class="imagePick" name="dataFile" id="fileChooser" onchange="return ValidateFileUpload()"  />
 		</div>
 		
 		<div class="col-xs-12 informationForm">
@@ -118,14 +118,14 @@
 		<div class="col-xs-12 informationForm" style="padding-bottom:10px;">
 			<h2>Password</h2>
 			
-			<form>
+			<form name="PassForm" onsubmit="return confirmPassword()" method="post">
 				Current Password:<br>
 				<input type="text" name="curPass">
 				<br>
 				New Password:<br>
 				<input type="text" name="newPass">
 				<br>
-				Confirm Password:
+				Confirm Password:<br>
 				<input type="text" name="confirmPass">
 				<br>
 				<br>
