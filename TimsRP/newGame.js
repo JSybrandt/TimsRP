@@ -1,15 +1,42 @@
 var newGame = {
 	totalPlayers: 3,
 	init: function(){
-		document.getElementById("btnRemovePlayer1").addEventListener("click",function() {newGame.RemovePlayer("player1")},false);
-		document.getElementById("btnRemovePlayer2").addEventListener("click",function() {newGame.RemovePlayer("player2")},false);
-		document.getElementById("btnRemovePlayer3").addEventListener("click",function() {newGame.RemovePlayer("player3")},false);
+		newGame.UpdateEventListeners();
 		document.getElementById("addMember").addEventListener("click", function() {newGame.AddPlayer()}, false);
 	},
 
-	RemovePlayer: function(player){
-		document.getElementById(player).remove();
-		newGame.totalPlayers = newGame.totalPlayers - 1;
+	UpdateEventListeners: function(){
+
+
+		var table = document.getElementById("addPlayerList");
+		for (index = 1;index < table.rows.length-1;index++){
+			var row = table.rows[index];
+			//var col = row.columns[2];
+			var col = row.cells[2];
+			col.innerHTML = "";
+			col.innerHTML = '<a class="btn btn-xs btn-danger" id="btnRemovePlayer3" >Remove</a>';
+		}
+
+		var removebtns = document.getElementsByClassName("btn-danger");
+		var index;
+		for (index = 0; index < removebtns.length; index++) {
+				//removebtns[index].removeEventListener("click",newGame.RemovePlayer);
+				removebtns[index].addEventListener("click",newGame.RemovePlayer(index),false);
+				//removebtns[index].remove();
+		}
+	},
+
+	RemovePlayer: function(index){
+		return function(){
+			newGame.totalPlayers = newGame.totalPlayers -1;
+			var table = document.getElementById("addPlayerList");
+			table.rows[index+1].remove();
+
+			newGame.UpdateEventListeners();
+			//console.log(index);
+			//document.getElementById(player).remove();
+			//newGame.totalPlayers = newGame.totalPlayers - 1;
+		}
 	},
 
 	AddPlayer: function(){
@@ -32,7 +59,10 @@ var newGame = {
 
 		colName.innerHTML = document.getElementById("AddPlayerName").value;
 		colEmail.innerHTML = "email@website.com";
-		colAction.innerHTML = '<a class="btn btn-xs btn-danger" id="btnRemovePlayer3">Remove</a>';
+		colAction.innerHTML = '<a class="btn btn-xs btn-danger" id="btnRemovePlayer3 tag = "btnRemovePlayer">Remove</a>';
+
+		newGame.UpdateEventListeners();
+		
 	}
 }
 
