@@ -3,6 +3,7 @@ var newGame = {
 	init: function(){
 		newGame.UpdateEventListeners();
 		document.getElementById("addMember").addEventListener("click", function() {newGame.AddPlayer()}, false);
+		document.getElementById("saveNewRP").addEventListener("click", function() {newGame.CreateRP()}, false);
 	},
 
 	UpdateEventListeners: function(){
@@ -27,6 +28,7 @@ var newGame = {
 	},
 
 	RemovePlayer: function(index){
+		//closure!
 		return function(){
 			newGame.totalPlayers = newGame.totalPlayers -1;
 			var table = document.getElementById("addPlayerList");
@@ -57,12 +59,34 @@ var newGame = {
 		var colEmail = row.insertCell(1);
 		var colAction = row.insertCell(2);
 
-		colName.innerHTML = document.getElementById("AddPlayerName").value;
+		colName.innerHTML = document.getElementById("AddPlayerName").value.bold();
 		colEmail.innerHTML = "email@website.com";
 		colAction.innerHTML = '<a class="btn btn-xs btn-danger" id="btnRemovePlayer3 tag = "btnRemovePlayer">Remove</a>';
 
 		newGame.UpdateEventListeners();
 		
+	},
+
+	CreateRP: function(){
+		//client side form validation before submitting
+
+		var gameName = document.getElementById("gameName").value;
+		var gameDescription = document.getElementById("gamedescription").value;
+		if (gameName == ""){
+			alert("Please enter a game name");
+			return;
+		}
+		else if (gameDescription ==  ""){
+			alert("Please enter a game description");
+			return;
+		}
+		else if (newGame.totalPlayers == 0){
+			alert("Please add players before continuing");
+			return;
+		}
+		else{
+			window.location = 'gameSettings.html';   
+		}
 	}
 }
 
