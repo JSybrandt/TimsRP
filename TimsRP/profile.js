@@ -26,7 +26,6 @@ function validateGenInfo() {
 		alert("Please enter a valid US zip code");
 	}
 	
-	alert("Your profile has been updated!");
 	//Return
 	return false;
 }
