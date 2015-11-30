@@ -16,8 +16,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campaigns <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="myGames.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Campaigns</a></li>
-                                <li><a href="newGame.html"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create Campaign</a></li>
+                                <li><a href="myGames.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Campaigns</a></li>
+                                <li><a href="newGame.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create Campaign</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -40,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">Tim's RP</a>
+                    <a class="navbar-brand" href="index.php">Tim's RP</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,13 +49,13 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campaigns <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="myGames.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Campaigns</a></li>
-                                <li><a href="newGame.html"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create Campaign</a></li>
+                                <li><a href="myGames.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Campaigns</a></li>
+                                <li><a href="newGame.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create Campaign</a></li>
                             </ul>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav">
-                        <li><a href="gameSettings.html"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Campaign Settings</a></li>
+                        <li><a href="gameSettings.php"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Campaign Settings</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -70,8 +70,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Profile<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="profile.html"> Profile </a></li>
-								<li><a href="index.html"> Logout </a><li>
+                                <li><a href="profile.php"> Profile </a></li>
+								<li><a href="index.php"> Logout </a><li>
                             </ul>
                         </li>
                     </ul>
