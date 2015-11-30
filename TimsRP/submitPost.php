@@ -76,7 +76,7 @@
     <div class="col-md-4" id="signupform">
         <h2>My Games</h2>
 		<hr>
-		<a href="game.html">
+		<a href="game.php">
 			<img src="images/game.png" alt="game icon"/>
 			<h3>Dr. Wheiz's Zany Island Adventure</h3>
 		</a>

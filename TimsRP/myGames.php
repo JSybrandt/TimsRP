@@ -17,7 +17,7 @@
     <?php include ("navbar.php"); ?>
      <div class="col-md-1">
         <h1><b>My Role Plays</b></h1>
-        <a href ="newGame.html" id = "newRP" class ="btn btn-success">START A NEW RP</a>
+        <a href ="newGame.php" id = "newRP" class ="btn btn-success">START A NEW RP</a>
     </div>
     <br/><br/>
     <div id="body" class="">
@@ -27,7 +27,7 @@
                     <td class="gameName">
                         <img class = "RPThumb" src="images/game.png" alt="thumbnail">
                         <div>
-                            <h4><a href="game.html"><b>Dr. Wheiz's Zany Island Adventure</b></a></h4>
+                            <h4><a href="game.php"><b>Dr. Wheiz's Zany Island Adventure</b></a></h4>
                             25 members, 4 here now
                         </div>
                     </td>
@@ -35,7 +35,7 @@
                         10 replies
                     </td>
                     <td class="gameUpdateHistory">
-                        Updated by <a href="profile.html">Nalta</a>
+                        Updated by <a href="profile.php">Nalta</a>
                         <br/><p style="color:gray">about 25 min ago</p>
                     </td>
                 </tr>
@@ -43,7 +43,7 @@
                     <td class="gameName">
                         <img class = "RPThumb" src="images/game2.png" alt="thumbnail">
                         <div>
-                            <h4><a href="game.html"><b>Freaky C's Dank Memes</b></a></h4>
+                            <h4><a href="game.php"><b>Freaky C's Dank Memes</b></a></h4>
                             10 members, 1 here now
                         </div>
                     </td>
@@ -51,7 +51,7 @@
                         9 replies
                     </td>
                     <td class="gameUpdateHistory">
-                        Updated by <a href="profile.html">FalseEcho</a>
+                        Updated by <a href="profile.php">FalseEcho</a>
                         <br/><p style="color:gray">Just now</p>
                     </td>
                 </tr>
@@ -59,7 +59,7 @@
                     <td class="gameName">
                         <img class = "RPThumb" src="images/game3.png" alt="thumbnail">
                         <div>
-                            <h4><a href="game.html"><b>Zard's Ghouls</b></a></h4>
+                            <h4><a href="game.php"><b>Zard's Ghouls</b></a></h4>
                             17 members, 3 here now
                         </div>
                     </td>
@@ -67,7 +67,7 @@
                         20 replies
                     </td>
                     <td class="gameUpdateHistory">
-                        Updated by <a href="profile.html">Reason</a>
+                        Updated by <a href="profile.php">Reason</a>
                         <br/><p style="color:gray">about 35 min ago</p>
                     </td>
                 </tr>
@@ -75,7 +75,7 @@
                     <td class="gameName">
                         <img class = "RPThumb" src="images/game.png" alt="thumbnail">
                         <div>
-                            <h4><a href="game.html"><b>Ginger Zombies</b></a></h4>
+                            <h4><a href="game.php"><b>Ginger Zombies</b></a></h4>
                             12 members, 2 here now
                         </div>
                     </td>
@@ -83,7 +83,7 @@
                         15 replies
                     </td>
                     <td class="gameUpdateHistory">
-                        Updated by <a href="profile.html">Astral</a>
+                        Updated by <a href="profile.php">Astral</a>
                         <br/><p style="color:gray">about 5 min ago</p>
                     </td>
                 </tr>

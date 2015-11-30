@@ -31,7 +31,7 @@
         <table id="gameRecord">		
 		<tr>
 			<td class="charData"><!--Post Metadata-->
-				<a href="profile.html">
+				<a href="profile.php">
 				<h3>Jeff</h3>
 				<img class="charImg" src="images/p4.jpg" alt="Player Image"/>
 				</a>
@@ -82,7 +82,7 @@
     <div class="col-md-4" id="signupform">
 		<h2>My Games</h2>
 		<hr>
-		<a href="game.html">
+		<a href="game.php">
 			<img src="images/game.png" alt="game image"/>
 			<h3>Dr. Wheiz's Zany Island Adventure</h3>
 		</a>
