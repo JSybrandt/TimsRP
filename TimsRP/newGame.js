@@ -85,7 +85,7 @@ var newGame = {
 			return;
 		}
 		else{
-			window.location = 'gameSettings.html';   
+			window.location = 'gameSettings.php';   
 		}
 	}
 }
