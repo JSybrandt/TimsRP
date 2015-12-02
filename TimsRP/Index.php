@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    session_start();     
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,15 +21,21 @@
         <img src="gameHeader.png" class="img-responsive img-center" alt="Front Page Image"/>
     </div>
     <div class="col-md-4" id="signupform">
-        <h2>User Registration</h2>
-        <form action="http://www.randyconnolly.com/tests/process.php" name="regform" id="regform" method="post">
-            First name:<br>
+        <h1>User Registration</h1>
+        <form action="registration.php" name="regform" id="regform" method="post">
+            <label for="firstname">First name:</label>
             <input type="text" name="firstname">
             <br>
-            Last name:<br>
+            <label for="lastname">Last name:</label>
             <input type="text" name="lastname">
             <br>
-            Sex: <br>
+            <label for="username">Username:</label> <br/>
+            <input type="text" name="username">
+            <br>
+            <label for="email">Email:</label> <br/>
+            <input type="email" name="email">
+            <br>
+            <label for="sex">Sex:</label><br/>
             <div class="radiogroup">
                 <div class="fieldgroup">
                     <input type="radio" name="sex" value="male"> Male
@@ -34,17 +44,12 @@
                     <input type="radio" name="sex" value="female"> Female
                 </div>
             </div>
-
             <br>
-            Date of birth:<br>
+            <label for="DOB">Date of birth:</label>
             <input type="date" name="DOB">
             <br>
-            What are you interested in? <br>
-            <select name="reglist" form="regform">
-                <option value="GameMaster">Game Master</option>
-                <option value="Player">Player</option>
-                <option value="Spectator">Spectator</option>
-            </select>
+            <label for="password">Password:</label>
+            <input type="password" name="password">
             <br>
             <br>
             <input type="submit" value="Register" class="btn btn-success">
