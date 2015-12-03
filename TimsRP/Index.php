@@ -1,5 +1,9 @@
 ﻿<?php
-    session_start();     
+    session_start();
+    if(isset($_COOKIE["loggedInUID"])) {
+        header("Location: myGames.php"); //Prevent user from trying to register while logged in.
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
