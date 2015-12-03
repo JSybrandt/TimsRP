@@ -1,9 +1,10 @@
 <?php
     session_start();    
-	
-	unset($_SESSION["loggedInUID"]); 
-	
+
 	if(isset($_POST["username"], $_POST["password"])) {
+        
+        unset($_COOKIE["loggedInUID"]); 
+        
 		$servername = "localhost";
         $susername = "root";
         $password = "";
@@ -22,14 +23,14 @@
         //echo "printing: ";
         //print_r($result);
         if($result->num_rows > 0) {
-            $_SESSION["loggedInUID"] = $user;
+            setcookie("loggedInUID",$user, time()+60*60*24*30);
         }
         else {
-            $_SESSION["loginFail"] = TRUE;
+            setcookie("loginFail",TRUE, time()+60);
         }
 	}
     else {
-        $_SESSION["loginFail"] = TRUE;
+        setcookie("loginFail",TRUE, time()+60);
     }
 	
 	header("Location: index.php");

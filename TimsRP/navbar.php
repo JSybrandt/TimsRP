@@ -1,9 +1,9 @@
 <?php 
-    if(isset($_SESSION["loggedInUID"])) {
+    if(isset($_COOKIE["loggedInUID"])) {
         include ("usernav.php");
     }
     else {
-        if($_SERVER["PHP_SELF"] !== "/timsrp/timsrp/index.php" && $_SERVER["PHP_SELF"] !== "/timsrp/timsrp/registration.php") {
+        if(basename($_SERVER["REQUEST_URI"]) !== "index.php" && basename($_SERVER["REQUEST_URI"]) !== "registration.php") {
             header("Location: index.php");
             exit;
         }

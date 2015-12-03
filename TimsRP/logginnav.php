@@ -39,8 +39,8 @@
 				</div>
 				<div class="modal-body">
 					<h4 class="red-text"><?php 
-					 	if(isset($_SESSION["loginFail"])) {
-							 unset($_SESSION["loginFail"]);
+					 	if(isset($_COOKIE["loginFail"])) {
+							 unset($_COOKIE["loginFail"]);
 							 echo "Bad Password/Username";
 						 }
 					 ?></h4>
