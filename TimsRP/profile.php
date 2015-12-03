@@ -26,13 +26,20 @@
 			My Profile
 		</div>
 		
-		
-		
 		<div class="col-md-12">
 			<h2>My Avatar</h2>
 			<img id="avatar" src="http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png" alt="Avatar"/>
-			<input type="file" class="imagePick" name="dataFile" id="fileChooser" onchange="return ValidateFileUpload()"  />
+			<form name="imgPick" id="imgPick" onsubmit="return updatePicture()" action="profileImgUpdate.php" method="post">
+				<br>
+				Image Link: <input type="text" class="imagePick" name="dataFile" id="fileChooser">
+				<br>
+				<input type="submit" value="Update Picture" style="width:150px">
+			</form>
 		</div>
+		
+		<script>
+			loadImg()
+		</script>
 		
 		<div class="col-xs-12 informationForm">
 			<h2>General Information</h2>
@@ -86,27 +93,6 @@
 				<input type="submit" value="Set New Password" class="btn btn-success">
 			</form>
 			<br>
-		</div>
-		
-		<div class="gameTable">
-		<h2>My Games</h2>
-		<br>
-			<table class="col-xs-12 table">
-				<thead>
-					<tr>
-						<th>Game Name</th>
-						<th>Game Owner</th>
-						<th>Players In Game</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td> Kewl Game </td>
-						<td> Dark_Overlord </td>
-						<td> 3 </td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
     </div>
     

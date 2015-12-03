@@ -38,6 +38,7 @@
         $dob = $_POST["DOB"];
         $pswd = $_POST["password"];
         $user = $_POST["username"];
+		$picture = "http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png";
         
         
         $servername = "localhost";
@@ -62,13 +63,13 @@
             $conn->autocommit(FALSE);
                 
             //$stmt = $conn->prepare("INSERT INTO users (userid, firstname,lastname,email,sex,birthday,password) VALUES (DEFAULT,?,?,?,?,?,?)");
-            $stmt = $conn->prepare("INSERT INTO users (userid,firstname,lastname,email,sex,birthday,password) VALUES (?,?,?,?,?,?,?)");
+            $stmt = $conn->prepare("INSERT INTO users (userid,firstname,lastname,email,picture,sex,birthday,password) VALUES (?,?,?,?,?,?,?,?)");
             if($stmt === FALSE) {
                 echo"Failed to prepare statement<br/>";
             }
             else {
                 //echo "It prepared!<br/>";
-                $stmt->bind_param("ssssiss",$user,$first,$last,$email,$sex,$dob,$pswd);
+                $stmt->bind_param("sssssiss",$user,$first,$last,$email,$picture,$sex,$dob,$pswd);
                 
                 $stmt->execute();
                 $conn->commit();

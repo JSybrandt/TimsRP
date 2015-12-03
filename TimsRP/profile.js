@@ -123,3 +123,46 @@ function checker (){
         alert("Please upgrade your browser, because your current browser lacks some new features we need!");
     }
 }
+
+function updatePicture(){
+	var img = $('#imgPick').find('input[name="dataFile"]').val();
+	$('#avatar').attr('src', img);
+	sleep(100);
+	var img = document.getElementById('avatar'); 
+	//or however you get a handle to the IMG
+	var width = img.clientWidth;
+	var height = img.clientHeight;	
+	
+	if(width<=150){
+		if(height <=150)
+		{
+			var imgUrl = $('#imgPick').find('input[name="dataFile"]').val();
+			var stuff = {url: newPass};
+			$.ajax(stuff);
+		}
+	}
+	else
+	{
+		alert("Image needs to be less than 150 pixels in height and width!");
+		$('#avatar').attr('src', "http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png" );
+	}
+	
+	return false;
+}
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+function loadImg(){
+	var jqxhr = $.get("loadImg.php");
+		jqxhr.done(function(data) {
+					console.log(data);
+					$("#avatar").attr('src', data);
+				});
+}
