@@ -146,6 +146,10 @@ li.open > a.dropdown-toggle {
     white-space: nowrap;
 }
 
+.hidden {
+    display: none;
+}
+
 #addPlayerList th, #addPlayerList td{
     border: solid #FFFFFF 2px;
     margin:2%;
