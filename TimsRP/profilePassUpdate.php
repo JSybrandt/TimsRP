@@ -43,6 +43,11 @@
 			/* close statement */
 			
 			$stmt->close();
+			
+			echo "<script>
+			alert(\"Your image has been updated!\");
+			window.location.href='http://localhost/TimsRP/TimsRP/profile.php';
+			</script>";	
 		}else echo "faileds statement";
 	}
 	else{
