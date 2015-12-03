@@ -43,7 +43,7 @@
 
                 <?php
                     $gameid = [];
-                    $requests = [];
+                    $gameNumPlayers = [];
                     $stmt = $conn->prepare("SELECT gameid FROM game_users WHERE userid=?");
                     $stmt->bind_param("s",$user);
                     if($stmt->execute()) {
@@ -53,8 +53,24 @@
                         }
                     }
                     $stmt->close();
+
+                    foreach($gameid as $g){
+                        $num = 0;
+                        $stmt = $conn->prepare("SELECT * FROM game_users WHERE gameid=?");
+                        $stmt->bind_param("s",$g);
+                        if($stmt->execute()) {
+                            $results = $stmt->get_result();
+                            while($newRow = $results->fetch_assoc()) {
+                                $num ++;
+                            }
+                        }
+                        $stmt->close();
+
+                        $gameNumPlayers[] = $num;
+                    }
                     
 
+                    $index = 0;
                     foreach($gameid as $g){
                         $stmt = $conn->prepare("SELECT * FROM games WHERE gameid=?");
                         $stmt->bind_param("s",$g);
@@ -64,27 +80,55 @@
                                 $img = $newRow["img"];
                                 $description = $newRow["description"];
 
+                                $stmt2 = $conn->prepare("SELECT COUNT(content) FROM `game_post` WHERE gameid=?");
+                                $stmt2->bind_param("s",$g);
+
+                                $repliesCount = 0;
+                                if ($stmt2->execute()){
+                                    $results2 = $stmt2->get_result();
+                                    while($newRow2 = $results2->fetch_assoc()) {
+                                        $repliesCount = $newRow2["COUNT(content)"];
+                                    }
+                                }
+                                $stmt2->close();
+
+                                $stmt2 = $conn->prepare("SELECT userid, content, timeofpost FROM `game_post` WHERE gameid=? ORDER BY timeofpost DESC");
+                                $stmt2->bind_param("s",$g);
+
+                                $lastTimeOfPost = '';
+                                $lastPostName = '';
+                                if ($stmt2->execute()){
+                                    $results2 = $stmt2->get_result();
+                                    //only get the first result
+                                    $newRow2 = $results2->fetch_assoc();
+                                    $lastTimeOfPost = $newRow2["timeofpost"];
+                                    $lastPostName = $newRow2["userid"];
+
+                                }
+                                $stmt2->close();
+
                                 echo '<tr>';
                                 echo    '<td class="gameName">';
                                 
                                 echo        '<img class = "RPThumb" src="'.$img.'" alt = "thumbnail">';
                                 echo        '<div>';
-                                echo        '<h4><a href="game.php"><b>'.$description.'</b></a></h4>';
-                                echo        '25 members, 4 here now';
+                                echo        '<h4><a href="game.php?gameid='.$g.'"><b>'.$description.'</b></a></h4>';
+                                echo        $gameNumPlayers[$index].' members';
                                 echo        '</div>';
                                 echo    '</td>';
 
                                 echo    '<td class = "gameRepliesCount">';
-                                echo        "10 replies";
+                                echo        $repliesCount." replies";
                                 echo    '</td>';
                                 echo    '<td class = "gameUpdateHistory">';
-                                echo        'Updated by <a href="profile.php">Nalta</a>';
-                                echo        '<br/><p style= "color:gray">about 25 min ago</p>';
+                                echo        'Updated by '.$lastPostName.'</a>';
+                                echo        '<br/><p style= "color:gray">Last updated on '.$lastTimeOfPost.'</p>';
                                 echo    '</td>';
                                 echo '</tr>';
                             }
                         }
                         $stmt->close();
+                        $index ++;
                     }
                     
                 ?>
