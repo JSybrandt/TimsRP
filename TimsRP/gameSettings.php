@@ -137,7 +137,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="1" data-game="<?php echo $row["gameid"]; ?>">Legend of the Five Rings</a></li>
                                         <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="2" data-game="<?php echo $row["gameid"]; ?>">Dungeons and Dragons</a></li>
-                                        <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="3" data-game="<?php echo $row["gameid"]; ?>">Warhammer 40k</a></li>
+                                        <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="3" data-game="<?php echo $row["gameid"]; ?>">Warhammer 40K</a></li>
                                     </ul>
                                 </div>
                             </td>

@@ -40,7 +40,7 @@ var settings = {
 			var name = $(this).data("player");
 			var game = $(this).data("gameid");
 			var url = window.location.href;
-			console.log("Player: "+name+" Game: "+game);
+			//console.log("Player: "+name+" Game: "+game);
 			$(this).on("click",function(){
 				var str = "addPlayer.php?userid="+name+"&gameid="+game; //"&return="+url+
 				$.get(str)
