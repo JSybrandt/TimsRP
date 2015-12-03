@@ -1,3 +1,7 @@
+<?php
+    session_start();     
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,36 +28,8 @@
                 <br/><br/>
                 <h4><b>Participants: </b></h4><hr>
                 <table id = "addPlayerList">
-                    <thead>
-                        <tr>
-                            <th class="center-text">Player Name</th>
-                            <th class="center-text">Email</th>
-                            <th class="center-text"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id = "player1">
-                            <td><b>Freaky C.</b></td>
-                            <td>Freaky1@gmail.com</td>
-                            <td><a class="btn btn-xs btn-danger" id="btnRemovePlayer1" >Remove</a></td>
-                        </tr>
-                        <tr id = "player2">
-                            <td><b>John Cena</b></td>
-                            <td>ucantseeme@gmail.com</td>
-                            <td><a class="btn btn-xs btn-danger" id="btnRemovePlayer2" >Remove</a></td>
-                        </tr>
-                        <tr id = "player3">
-                            <td><b>Mike Boom</b></td>
-                            <td>salt@gmail.com</td>
-                            <td><a class="btn btn-xs btn-danger" id="btnRemovePlayer3" >Remove</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                            Add Player: <input type="text" name="gameMembers" id="AddPlayerName" >    <a id="addMember" class="btn btn-s btn-success">Add</a>
-                            </td>
-                        </tr>
-                    </tbody>
                 </table>
+				Add Player: <input type="text" name="gameMembers" id="AddPlayerName" >    <a id="addMember" class="btn btn-s btn-success">Add</a>
 				<br/>
                 <a id="saveNewRP" class="btn btn-xl btn-success">Create my Role Play!</a>
             </div>

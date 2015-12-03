@@ -1,4 +1,27 @@
-﻿<!DOCTYPE html>
+﻿<?php
+    session_start();
+    
+    $servername = "localhost";
+    $susername = "root";
+    $password = "";
+    $db = "timsrp";
+    $conn = new mysqli($servername,$susername,$password,$db);
+    if($conn->connect_error) {
+        die("Connection failed: ".$conn->connect_error);
+    }
+    
+    $user = $_SESSION["loggedInUID"];
+    //$gameid = $_POST["gameid"];
+    
+    $sql = "SELECT adminuserid FROM games WHERE userid='".$user."'";
+    echo $sql."<br/>";
+    $result = $conn->query($sql);
+    if($result === FALSE || $result->num_rows === 0) {
+        //header("Location: index.php");
+    }
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,7 +36,10 @@
 
 </head>
 <body>
-<?php include ("navbar.php"); ?>    
+<?php include ("navbar.php"); ?>
+<?php 
+
+?>
 <div id="body" class="container">
         <div class="row">
             <!--List of active players-->
@@ -31,7 +57,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr id="player1">
+                        <?php 
+                        
+                            
+                        
+                        ?>
+                        
+                        <!--<tr id="player1">
                             <td>John Doe</td>
                             <td>Active</td>
                             <td class="center-text"><a id="player1Rmv" class="btn btn-xs btn-danger">Remove</a></td>
@@ -45,7 +77,7 @@
                             <td>Friend Frank</td>
                             <td id="player3Stat">Requested to join</td>
                             <td class="center-text"><a id="player3Rmv" class="btn btn-xs btn-danger">Decline</a> <a id="player3Add" class="btn btn-xs btn-success">Accept</a></td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -119,3 +151,7 @@
     <script src="js/gameSettings.js"></script>
 </body>
 </html>
+
+<?php 
+    $conn->close();
+?>
