@@ -58,29 +58,54 @@ function confirmPassword(){
 function ValidateFileUpload() {
 	var fuData = document.getElementById('fileChooser');
     var FileUploadPath = fuData.value;
+	
+	var checkSize = checker();
+	
+	if (checkSize ==0){
 
-	//To check if user upload any file
-    if (FileUploadPath == '') {
-        alert("Please upload an image");
+		//To check if user upload any file
+		if (FileUploadPath == '') {
+			alert("Please upload an image");
 
-        } else {
-        var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+			} else {
+			var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
 
-	//The file uploaded is an image
+		//The file uploaded is an image
 
-	if (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg") {
-		// To Display
-		if (fuData.files && fuData.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {$('#avatar').attr('src', e.target.result);}
-			reader.readAsDataURL(fuData.files[0]);
+		if (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg") {
+			// To Display
+			if (fuData.files && fuData.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {$('#avatar').attr('src', e.target.result);}
+				reader.readAsDataURL(fuData.files[0]);
+				}
+		} 
+
+		//The file upload is NOT an image
+		else {
+				alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
+
 			}
-    } 
-
-	//The file upload is NOT an image
-	else {
-			alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
-
 		}
 	}
+	else
+		alert("Please upload a file 65kB or smaller!");
+}
+
+function checker (){
+    //check whether browser fully supports all File API
+    if (window.File && window.FileReader && window.FileList && window.Blob)
+    {
+        //get the file size and file type from file input field
+        var fsize = $('#fileChooser')[0].files[0].size;
+        
+        if(fsize>65000) //do something if file size more than 65 KB
+        {
+            return 1;
+        }else{
+            return 0;
+        }
+    }else{
+        alert("Please upgrade your browser, because your current browser lacks some new features we need!");
+    }
 }

@@ -34,19 +34,15 @@
 			<h2>General Information</h2>
 			<form name="GenInfo" id="GenInfo" onsubmit="return validateGenInfo()" method="post">
 				First name:<br>
-				<input type="text" name="firstname">
+				<input type="text" name="firstname" required>
 				<br>
 				Last name:<br>
-				<input type="text" name="lastname">
+				<input type="text" name="lastname" required>
 				<br>
 				   
 				Email:<br>
-				<input type="text" name="email" id="email">
+				<input type="text" name="email" id="email" required>
 				<br>
-					
-				Postal Code:<br>
-				<input type="text" name="zipCode">
-				<br> 
 					
 				Sex: <br>
 				<div class="radiogroup">
