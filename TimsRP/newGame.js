@@ -81,6 +81,10 @@ var newGame = {
 
 		var gameName = document.getElementById("gameName").value;
 		var gameDescription = document.getElementById("gamedescription").value;
+		var imgLink = $("#gameImg").val();
+		
+		//console.log("img:"+imgLink);
+		
 		if (gameName == ""){
 			alert("Please enter a game name");
 			return;
@@ -89,14 +93,19 @@ var newGame = {
 			alert("Please enter a game description");
 			return;
 		}
+		else if (imgLink ==  ""){
+			alert("Please enter an image link.");
+			return;
+		}
 		else if (newGame.totalPlayers == 0){
 			alert("Please add players before continuing");
 			return;
 		}
 		
-		var jqxhr = $.post( "dbEdits/addGame.php",{gameid:gameName, description:gameDescription});
-		jqxhr.done(function(){
-			console.log("got here");
+		var jqxhr = $.post( "dbEdits/addGame.php",{gameid:gameName, description:gameDescription, img:imgLink});
+		
+		jqxhr.done(function(msg){
+			console.log(msg);
 			
 			$('#addPlayerList tr').each(function() {
 				var userName = $(this).find("td:first").html();    
@@ -116,3 +125,37 @@ var newGame = {
 }
 
 newGame.init();
+
+
+
+//ValidateFileUpload taken from the author newbieinjavaversion2 from the following URL:
+//http://stackoverflow.com/questions/21396279/display-image-and-validation-of-image-extension-before-uploading-file-using-java
+function ValidateFileUpload() {
+	var fuData = document.getElementById('fileChooser');
+    var FileUploadPath = fuData.value;
+
+	//To check if user upload any file
+    if (FileUploadPath == '') {
+        alert("Please upload an image");
+
+        } else {
+        var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+	//The file uploaded is an image
+
+	if (Extension == "gif" || Extension == "png" || Extension == "bmp" || Extension == "jpeg" || Extension == "jpg") {
+		// To Display
+		if (fuData.files && fuData.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {$('#avatar').attr('src', e.target.result);}
+			reader.readAsDataURL(fuData.files[0]);
+			}
+    } 
+
+	//The file upload is NOT an image
+	else {
+			alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
+
+		}
+	}
+}

@@ -47,8 +47,8 @@ CREATE TABLE GAME_POST(
 	gameid varchar(30),
 	userid varchar(30),
 	content varchar(1000),
-	timeofpost date,
+	timeofpost datetime,
 	foreign key (gameid) references GAMES(gameid),
 	foreign key (userid) references USERS(userid),
-    primary key (gameid, userid)
+    primary key (gameid, userid, timeofpost)
 );

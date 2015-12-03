@@ -1,3 +1,67 @@
+<?php
+
+	//EXPECTS $_GET["gameid"] to be set;
+    session_start();     
+	
+
+	if(isset($_GET["gameid"])){
+		
+	
+
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbName = "timsrp";
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbName);
+
+	// Check connection
+	if ($conn->connect_error) {
+		echo "connerr";
+		die("Connection failed: " . $conn->connect_error);
+	} 	
+	
+	if ($stmt = $conn->prepare("SELECT gameid,description,img FROM `timsrp`.`games` WHERE gameid=?")) {
+		/* bind parameters for markers */
+		$stmt->bind_param("s", $_GET["gameid"]);
+
+		/* execute query */
+		$rc = $stmt->execute();
+		if ( false===$rc ) {
+			echo "failed excecute";
+			die("FALLD");
+		}
+		
+		global $imgSrc;
+		global $desc;
+		global $gameid;
+		
+		if ($result = $stmt->get_result()){
+			
+			while ($row = $result->fetch_array(MYSQLI_NUM))
+			{
+				$gameid=$row[0];
+				$desc=$row[1];
+				$imgSrc=$row[2];
+				
+			}
+			
+			
+		}else echo "failed get_result";
+        
+
+		/* close statement */
+		$stmt->close();
+	}else echo "failed statement";
+
+	$conn->close();
+	
+}
+	
+	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,76 +81,72 @@
     <?php include ("navbar.php"); ?>
     <div id="body" class="col-md-8">
 		<div id="gameHeader">
-			<img src="images/game.png" alt="RP image"/>
-			<h1>Dr. Wheiz's Zany Island Adventure</h1>	
+			<img src=<?php echo $imgSrc;?> alt="RP image"/>
+			<h1><?php echo $gameid;?></h1>	
 		</div>
 		<button id="new-post-btn" class="btn btn-success"> New Post </button>
 		<div id="new-post-form">
-			<form action="http://www.randyconnolly.com/tests/process.php" name="regform" id="regform" method="post">
-				<textarea id="mytextarea"></textarea>
-				<br>
-				<button  class="btn btn-success" id="submit-post-btn"> Post </button>
-			</form>
+			
+			<textarea id="mytextarea"></textarea>
+			<br>
+			<button  class="btn btn-success" id="submit-post-btn"> Post </button>
+			
 		</div>
         <table id="gameRecord">		
-		<tr>
-			<td class="charData"><!--Post Metadata-->
-				<a href="profile.php">
-				<h3>Jeff</h3>
-				<img class="charImg" src="images/p4.jpg" alt="Player Image"/>
-				</a>
-			</td>
-			<td class="postContent"><!--Post Content-->
-				I throw my ax at the beast!
-				I rolled a 6.
-			</td>
-		</tr>
-		<tr>
-			<td class="charData"><!--Post Metadata-->
-				<h3>Samson</h3>
-				<img class="charImg" src="images/p3.jpg" alt="Player Image"/>
-			</td>
-			<td class="postContent"><!--Post Content-->
-				I grab my lance, and whisle for my horse, hopefully Bertrude was able to handle the warpigs. I scan the area for a distraction. 12 on perception.
-			</td>
-		</tr>
-		<tr>
-			<td class="charData"><!--Post Metadata-->
-				<h3>Maxwell</h3>
-				<img class="charImg" src="images/p2.jpg" alt="Player Image"/>
-			</td>
-			<td class="postContent"><!--Post Content-->
-				Aldo, you're lucky that talking is a free action, I grab my staff and start chanting cone of frost. 16 for casting.
-			</td>
-		</tr>
-		<tr>
-			<td class="charData"><!--Post Metadata-->
-				<h3>Aldo</h3>
-				<img class="charImg" src="images/p1.jpg" alt="Player Image"/>
-			</td>
-			<td class="postContent"><!--Post Content-->
-				Pigs again?! I draw my sword, and yell to the heavens, "GM NEEDS BETTER MOOKS!"
-			</td>
-		</tr>
-		<tr>
-			<td class="charData"><!--Post Metadata-->
-				<h3>GM</h3>
-			</td>
-			<td class="postContent"><!--Post Content-->
-				You all find yourselves in a forest surrounded by angry looking feral pigs. In front of you is the largest warthog you have ever seen. The other animals seem content watching the fight, and form a tight circle around you all.
-			</td>
-		</tr>
-		</table>
+		
+		<?php 
+		
+		if(isset($_GET["gameid"])){
 
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbName = "timsrp";
+
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, $dbName);
+
+			// Check connection
+			if ($conn->connect_error) {
+				echo "connerr";
+				die("Connection failed: " . $conn->connect_error);
+			} 	
+			
+			if ($stmt = $conn->prepare("SELECT users.userid, content, picture FROM `game_post` JOIN USERS WHERE gameid=? ORDER BY timeofpost DESC")) {
+				/* bind parameters for markers */
+				$stmt->bind_param("s", $_GET["gameid"]);
+
+				/* execute query */
+				$rc = $stmt->execute();
+				if ( false===$rc ) {
+					echo "failed excecute";
+					die("FALLD");
+				}
+								
+				if ($result = $stmt->get_result()){
+					
+					while ($row = $result->fetch_array(MYSQLI_NUM))
+					{
+						echo "<tr><td class=\"charData\"><h3>".$row[0]."</h3><img class=\"charImg\" src=\"".$row[2]."\" alt=\"Player Image\"/></td><td class=\"postContent\">".$row[1]."</td></tr>";				
+					}
+					
+					
+				}else echo "failed get_result";
+				
+
+				/* close statement */
+				$stmt->close();
+			}else echo "failed statement";
+
+			$conn->close();
+	
+		}
+		
+		?>
+		
+		
     </div>
-    <div class="col-md-4" id="signupform">
-		<h2>My Games</h2>
-		<hr>
-		<a href="game.php">
-			<img src="images/game.png" alt="game image"/>
-			<h3>Dr. Wheiz's Zany Island Adventure</h3>
-		</a>
-    </div>
+
     <footer>
         <div class="content-wrapper">
             <div class="float-left">

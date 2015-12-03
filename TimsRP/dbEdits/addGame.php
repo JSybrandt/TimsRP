@@ -1,9 +1,9 @@
 <?php 
 
 /*
-Expects "gameid" and "description" to be defined in $_POST
+Expects "gameid" and "description" and "img" to be defined in $_POST
 */
-if(isset($_POST["gameid"])&&isset($_POST["description"])){
+if(isset($_POST["gameid"])&&isset($_POST["description"]) && isset($_POST["img"])){
 
 	$servername = "localhost";
 	$username = "root";
@@ -15,22 +15,24 @@ if(isset($_POST["gameid"])&&isset($_POST["description"])){
 
 	// Check connection
 	if ($conn->connect_error) {
+		echo "connerr";
 		die("Connection failed: " . $conn->connect_error);
-	} 
-
+	} 	
 	
-	
-	if ($stmt = $conn->prepare("INSERT INTO `timsrp`.`games` ( `gameid`, `description`) VALUES (?, ?)")) {
+	if ($stmt = $conn->prepare("INSERT INTO `timsrp`.`games` ( `gameid`, `description`,`img`) VALUES (?, ?, ?)")) {
 
 		/* bind parameters for markers */
-		$stmt->bind_param("ss", $_POST["gameid"], $_POST["description"]);
+		$stmt->bind_param("sss", $_POST["gameid"], $_POST["description"], $_POST["img"]);
 
 		/* execute query */
-		$stmt->execute();
+		$rc = $stmt->execute();
+		if ( false===$rc ) {
+			echo "failed excecute";
+		}
 
 		/* close statement */
 		$stmt->close();
-	}
+	}else echo "failed statement";
 
 	$conn->close();
 	
