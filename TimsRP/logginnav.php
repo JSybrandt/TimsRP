@@ -20,7 +20,42 @@
 						</ul>
 					</li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="navbar-brand" data-toggle="modal" data-target="#myModal" href="#">Login</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
 </header>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  	<div class="modal-dialog" role="document">
+		<form action="login.php" name="loginform" id="loginform" method="post">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Login</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="red-text"><?php 
+					 	if(isset($_SESSION["loginFail"])) {
+							 unset($_SESSION["loginFail"]);
+							 echo "Bad Password/Username";
+						 }
+					 ?></h4>
+					<label for="username">Username:</label>
+					<input type="text" name="username">
+					<br>
+					<label for="password">Password:</label>
+					<input type="password" name="password">
+					<br>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

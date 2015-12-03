@@ -29,10 +29,6 @@
         // print_r($_POST);
         // echo"</pre>";
         
-        $servername = "localhost";
-        $susername = "root";
-        $password = "";
-        $db = "timsrp";
         $sex;
         if($_POST["sex"] === "male") { $sex = 1; }
         else { $sex = 0; }
@@ -43,6 +39,11 @@
         $pswd = $_POST["password"];
         $user = $_POST["username"];
         
+        
+        $servername = "localhost";
+        $susername = "root";
+        $password = "";
+        $db = "timsrp";
         $conn = new mysqli($servername,$susername,$password,$db);
         if($conn->connect_error) {
             die("Connection failed: ".$conn->connect_error);

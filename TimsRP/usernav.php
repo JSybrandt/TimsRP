@@ -1,5 +1,3 @@
-
-	
 <header>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -27,19 +25,10 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span> Notifications <span class="badge">4</span> <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Notification 1</a></li>
-							<li><a href="#">Notification 2</a></li>
-							<li><a href="#">Notification 3</a></li>
-							<li><a href="#">Notification 4</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Profile<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="profile.php"> Profile </a></li>
-							<li><a href="index.php"> Logout </a><li>
+							<li><a href="logout.php"> Logout </a><li>
 						</ul>
 					</li>
 				</ul>
