@@ -48,7 +48,7 @@
 	else{
 		echo "<script>
 		alert(\"Please enter your current password correctly!\");
-		window.location.href='http://localhost/Tims%20RP/TimsRP/profile.php';
+		window.location.href='http://localhost/TimsRP/TimsRP/profile.php';
 		</script>";		
 	}
 	
