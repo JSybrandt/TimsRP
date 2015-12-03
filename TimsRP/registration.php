@@ -4,31 +4,11 @@
     if(!isset($_POST["firstname"], $_POST["lastname"],$_POST["email"],$_POST["sex"],$_POST["DOB"],$_POST["password"], $_POST["username"])) {
         header("Location: index.php");
     }        
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Registration</title>
-    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="Site.css" />
-    
-    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
-</head>
-<body>
-    <?php include ("navbar.php"); ?>
-    <div id="body" class="col-md-12 text-center">
-		<?php 
-        // echo"<pre>";
+            // echo"<pre>";
         // print_r($_POST);
         // echo"</pre>";
         
+        $error;
         $sex;
         if($_POST["sex"] === "male") { $sex = 1; }
         else { $sex = 0; }
@@ -56,7 +36,7 @@
         //echo "printing: ";
         //print_r($result);
         if($result->num_rows > 0) {
-            echo "Error: Email already exists<br/>";
+            $error = "Error: Email already exists<br/>";
         }
         else {
             $row = $result->fetch_assoc();
@@ -65,7 +45,7 @@
             //$stmt = $conn->prepare("INSERT INTO users (userid, firstname,lastname,email,sex,birthday,password) VALUES (DEFAULT,?,?,?,?,?,?)");
             $stmt = $conn->prepare("INSERT INTO users (userid,firstname,lastname,email,picture,sex,birthday,password) VALUES (?,?,?,?,?,?,?,?)");
             if($stmt === FALSE) {
-                echo"Failed to prepare statement<br/>";
+                $error = "Failed to prepare statement<br/>";
             }
             else {
                 //echo "It prepared!<br/>";
@@ -76,14 +56,40 @@
                 
                 $stmt->close();
     
-                $_COOKIE["loggedInUID"] = $user;
-                echo "Welcome ".$_POST["firstname"]." ".$_POST["lastname"]." with username ".$_COOKIE["loggedInUID"]."!<br/>";
-                echo "You have successfully signed up!<br/>";
+                setcookie("loggedInUID",$user, time()+60*60*24*30);
             }
         }
         $conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Registration</title>
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="Site.css" />
+    
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>	
+</head>
+<body>
+    <?php include ("navbar.php"); ?>
+    <div id="body" class="col-md-12 text-center">
+		<?php 
+        if(isset($error)) {
+            echo $error;
+        }
+        else {
+            echo "Welcome ".$_POST["firstname"]." ".$_POST["lastname"]." with username ".$user."!<br/>";
+            echo "You have successfully signed up!<br/>";
+        }
         ?>
-        
+        <a class="btn btn-default" href="Index.php">BACK</a>
 	</div>
 </body>
 </html>

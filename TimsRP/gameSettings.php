@@ -1,6 +1,10 @@
 ﻿<?php
     session_start();
     
+    if(!isset($_COOKIE["gameid"])) {
+        header("Location: index.php");
+    }
+    
     $servername = "localhost";
     $susername = "root";
     $password = "";
@@ -12,8 +16,8 @@
     $conn->autocommit(FALSE);
         
     $user = $_COOKIE["loggedInUID"];
-    //$gameid = $_GET["gameid"];
-    $gameid = "test";
+    $gameid = $_COOKIE["gameid"];
+    //$gameid = "test";
     
     $sql = "SELECT * FROM games WHERE adminuserid='".$user."'";
     $result = $conn->query($sql);
