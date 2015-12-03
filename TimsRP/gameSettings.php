@@ -111,22 +111,6 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <td>Campaign Visibility</td>
-                            <td id="visStat">Invite Only</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Change <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a data-dropdown="vis" href="#" class="dropBtn">Public</a></li>
-                                        <li><a data-dropdown="vis" href="#" class="dropBtn">Invite Only</a></li>
-                                        <li><a data-dropdown="vis" href="#" class="dropBtn">Private</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
                             <td>Game System</td>
                             <td id="rpStat"><?php echo $row["systemname"]; ?></td>
                             <td>

@@ -18,11 +18,15 @@
 	}
 	
 	$user = $_COOKIE["loggedInUID"];
-	$game = $_POST["gameid"];
+	$game = $_GET["gameid"];
 	
 	$sqlcheck = "SELECT * FROM games WHERE adminuserid='".$user."' AND gameid='".$game."'";
+	print_r($sqlcheck);
+	
+	
 	$resultadmin = $conn->query($sqlcheck);
-	if($resultadmin === FALSE && $resultadmin->num_rows > 0) {
+	echo $resultadmin->num_rows;
+	if($resultadmin !== FALSE && $resultadmin->num_rows > 0) {
 		setcookie("gameid",$game,time()+60*60*24*30);
 	}
          	

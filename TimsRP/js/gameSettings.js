@@ -22,7 +22,7 @@ var settings = {
 			var game = $(this).data("gameid");
 
 			$(this).on("click",function(){
-				var str = "rmvPlayer.php?userid="+name+"&gameid="+game+"&request=true"; //"&return="+url+
+				var str = "rmvPlayer.php?userid="+name+"&gameid="+game+"&request=true";
 				$.get(str)
 				.done(function(data) {
 					$("#"+name).empty();
@@ -61,7 +61,6 @@ var settings = {
 				$.get(str)
 				.done(function(data) {
 					$("#rpStat").text(data);
-					//alert(data);
 				})
 				.fail(function(jqHXR){
 					console.log("ERROR: Query failed");
