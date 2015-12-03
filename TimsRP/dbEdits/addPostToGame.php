@@ -24,7 +24,7 @@ if(isset($_POST["gameid"])&&isset($_POST["userid"])&&isset($_POST["content"])){
 	if ($stmt = $conn->prepare("INSERT INTO `timsrp`.`game_post` (`gameid`, `userid`, `content`, `timeofpost`) VALUES (?, ?, ?, NOW())")) {
 
 		/* bind parameters for markers */
-		$stmt->bind_param("ss", $_POST["gameid"], $_POST["userid"],$_POST["content"]);
+		$stmt->bind_param("sss", $_POST["gameid"], $_POST["userid"],$_POST["content"]);
 
 		/* execute query */
 		$rc = $stmt->execute();
