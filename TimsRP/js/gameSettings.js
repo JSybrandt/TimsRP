@@ -90,22 +90,24 @@ var settings = {
 					$.post( "dbEdits/addPlayerToGame.php",{userid:player,gameid:game})
 					.done(function() {
 						var str = "<tr id='"+player+"Row'>"+
-							"<td>"+player+"</td><td>Active</td><td class='center-text'><a class='btn btn-xs btn-danger id='"+player+"' rmvPlayer' data-gameid='"+game+"' data-player='"+player+"'>Remove</a></td></tr>";
-						$("#playerTable").append(str);
-						
-						var name = $("#"+player).data("player");
-						var game = $("#"+player).data("gameid");
+							"<td>"+player+"</td><td>Active</td><td class='center-text'><a class='btn btn-xs rmvPlayer btn-danger' id='"+player+"Btn' data-gameid='"+game+"' data-player='"+player+"'>Remove</a></td></tr>";
 						var url = window.location.href;
-						$("#"+player).on("click",function(){
-							var str = "rmvPlayer.php?userid="+name+"&gameid="+game+"&return="+url;
+						$("#playerTable").append(str);
+						var tag = "#"+player+"Btn";
+						//alert(tag);
+						$(tag).on("click",function(){
+							//alert("Test");
+							var str = "rmvPlayer.php?userid="+player+"&gameid="+game+"&return="+url;
 							$.get(str)
 							.done(function(data) {
-								$("#"+name).empty();
+								$("#"+player+"Row").empty();
 							})
 							.fail(function(jqHXR){
 								console.log("ERROR: Query failed");
 							});
 						});
+						
+						
 					})
 					.fail(function(jqHXR){
 						$(".invite").text("No username");
