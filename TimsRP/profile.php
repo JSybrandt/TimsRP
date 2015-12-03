@@ -36,7 +36,7 @@
 		
 		<div class="col-xs-12 informationForm">
 			<h2>General Information</h2>
-			<form name="GenInfo" id="GenInfo" onsubmit="return validateGenInfo()" method="post">
+			<form name="GenInfo" id="GenInfo" onsubmit="return validateGenInfo()" action="profileInfoUpdate.php" method="post">
 				First name:<br>
 				<input type="text" name="firstname" required>
 				<br>
@@ -72,7 +72,7 @@
 		<div class="col-xs-12 informationForm" style="padding-bottom:10px;">
 			<h2>Password</h2>
 			
-			<form name="PassForm" onsubmit="return confirmPassword()" method="post">
+			<form name="PassForm" id="PassForm" action="profilePassUpdate.php" onsubmit="return confirmPassword()" method="post">
 				Current Password:<br>
 				<input type="password" name="curPass">
 				<br>
@@ -118,3 +118,14 @@
     </footer>
 </body>
 </html>
+
+<?php
+		$servername = "localhost";
+        $susername = "root";
+        $password = "";
+        $db = "timsrp";
+        $conn = new mysqli($servername,$susername,$password,$db);
+        if($conn->connect_error) {
+            die("Connection failed: ".$conn->connect_error);
+        }
+?>

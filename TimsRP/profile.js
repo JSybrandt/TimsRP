@@ -26,6 +26,14 @@ function validateGenInfo() {
 		alert("Please enter a valid US zip code");
 	}
 	
+	var fName = $('#GenInfo').find('input[name="firstname"]').val();
+	var lName = $('#GenInfo').find('input[name="lastname"]').val();
+	var snailMail = $('#GenInfo').find('input[name="email"]').val();
+	var sex = $('#GenInfo').find('input[name="sex"]').val();
+	var dob = $('#GenInfo').find('input[name="DOB"]').val();
+	var stuff = {first: fName, last: lName, smail: snailMail, gender: sex, bday: dob};
+	$.ajax(stuff);
+	
 	//Return
 	return false;
 }
@@ -50,6 +58,12 @@ function confirmPassword(){
 	
 	if(pass != confPass){
 		alert("New password does not match!");
+	}
+	else{
+		var curPass = $('#PassForm').find('input[name="curPass"]').val();
+		var newPass = $('#PassForm').find('input[name="confirmPass"]').val();
+		var stuff = {pass: newPass};
+		$.ajax(stuff);
 	}
 }
 
