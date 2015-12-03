@@ -25,8 +25,8 @@ if(isset($_POST["gameid"])&&isset($_POST["userid"])){
 
 		/* bind parameters for markers */
 		$stmt->bind_param("ss", $_POST["gameid"], $_POST["userid"]);
-		echo $_POST["gameid"];
-		echo $_POST["userid"];
+		//echo $_POST["gameid"];
+		//echo $_POST["userid"];
 		/* execute query */
 		$rc = $stmt->execute();
 		if ( false===$rc ) {

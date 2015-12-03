@@ -116,9 +116,7 @@
                                 echo        '<h4><a href="game.php?gameid='.$g.'"><b>'.$g.'</b></a></h4>';
                                 echo        '<i>'.$description.'</i><br>';
                                 echo        $gameNumPlayers[$index].' members';
-                                echo        '<form name="RequestMembership" id="RequestMembership" onsubmit="return addRequest()" action="dbEdits/addPlayerToRequest.php" method="post">';
-                                echo            '<input type="submit" value="Request Membership" style="width:150px">';
-                                echo        '</form>';
+                                echo        '<button id="requestRP" onclick="RJG.requestgame(\''.$g.'\', \''.$user.'\')">Request</a>';
                                 echo        '</div>';
                                 echo    '</td>';
 
