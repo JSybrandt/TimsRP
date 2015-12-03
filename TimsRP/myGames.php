@@ -91,12 +91,28 @@
                                     }
                                 }
                                 $stmt2->close();
+
+                                $stmt2 = $conn->prepare("SELECT userid, content, timeofpost FROM `game_post` WHERE gameid=? ORDER BY timeofpost DESC");
+                                $stmt2->bind_param("s",$g);
+
+                                $lastTimeOfPost = '';
+                                $lastPostName = '';
+                                if ($stmt2->execute()){
+                                    $results2 = $stmt2->get_result();
+                                    //only get the first result
+                                    $newRow2 = $results2->fetch_assoc();
+                                    $lastTimeOfPost = $newRow2["timeofpost"];
+                                    $lastPostName = $newRow2["userid"];
+
+                                }
+                                $stmt2->close();
+
                                 echo '<tr>';
                                 echo    '<td class="gameName">';
                                 
                                 echo        '<img class = "RPThumb" src="'.$img.'" alt = "thumbnail">';
                                 echo        '<div>';
-                                echo        '<h4><a href="game.php"><b>'.$description.'</b></a></h4>';
+                                echo        '<h4><a href="game.php?gameid='.$g.'"><b>'.$description.'</b></a></h4>';
                                 echo        $gameNumPlayers[$index].' members';
                                 echo        '</div>';
                                 echo    '</td>';
@@ -105,8 +121,8 @@
                                 echo        $repliesCount." replies";
                                 echo    '</td>';
                                 echo    '<td class = "gameUpdateHistory">';
-                                echo        'Updated by <a href="profile.php">Nalta</a>';
-                                echo        '<br/><p style= "color:gray">about 25 min ago</p>';
+                                echo        'Updated by '.$lastPostName.'</a>';
+                                echo        '<br/><p style= "color:gray">Last updated on '.$lastTimeOfPost.'</p>';
                                 echo    '</td>';
                                 echo '</tr>';
                             }
