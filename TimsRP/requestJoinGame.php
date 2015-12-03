@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>My RPs</title>
+    <title>Join a Role Play</title>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
