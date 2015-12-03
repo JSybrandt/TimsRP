@@ -116,7 +116,7 @@
                                 echo        '<h4><a href="game.php?gameid='.$g.'"><b>'.$g.'</b></a></h4>';
                                 echo        '<i>'.$description.'</i><br>';
                                 echo        $gameNumPlayers[$index].' members';
-                                echo        '<button id="requestRP" onclick="RJG.requestgame(\''.$g.'\', \''.$user.'\')">Request</a>';
+                                echo        '<button id="requestRP'.$index.'" onclick="RJG.requestgame(\''.$g.'\', \''.$user.'\', \'requestRP'.$index.'\')">Request</a>';
                                 echo        '</div>';
                                 echo    '</td>';
 
