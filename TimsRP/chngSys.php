@@ -1,7 +1,5 @@
 <?php
-    session_start();
-	
-	if(isset($_COOKIE["loggedInUID"],$_GET["userid"],$_GET["gameid"])) {
+	if(isset($_COOKIE["loggedInUID"],$_GET["sys"],$_GET["gameid"])) {
 		$servername = "localhost";
         $susername = "root";
         $password = "";
@@ -11,17 +9,20 @@
             die("Connection failed: ".$conn->connect_error);
         }
         
-        $user = $_GET["userid"];
-        $game = $_GET["gameid"];
-        
-        $sql;
-        if(isset($_GET["request"])) {
-            $sql = "DELETE FROM game_requests WHERE userid='".$user."' AND gameid='".$game."'";
+        $sys = $_GET["sys"];
+        $id = $_GET["gameid"];
+        $str;
+        if($sys == 1) {
+            $str = "Legend of the Five Rings";
+        }
+        else if($sys == 2) {
+            $str = "Dungeons and Dragons";
         }
         else {
-            $sql = "DELETE FROM game_users WHERE userid='".$user."' AND gameid='".$game."'";
+            $str = "Warhammer 40K";
         }
-        //$sql = "DELETE FROM game_users WHERE userid='".$user."'";
+        echo $str;
+        $sql = "UPDATE games SET systemname='".$str."' WHERE gameid='".$id."'";
         $result = $conn->query($sql);
         if($result === FALSE) {
             header("HTTP/1.1 500 Internal Server Error");

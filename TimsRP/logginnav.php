@@ -29,7 +29,7 @@
 </header>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" <?php if(isset($_COOKIE["loginFail"])) { echo "data-show='true'";} ?> >
   	<div class="modal-dialog" role="document">
 		<form action="login.php" name="loginform" id="loginform" method="post">
 			<div class="modal-content">
@@ -38,12 +38,14 @@
 					<h4 class="modal-title" id="myModalLabel">Login</h4>
 				</div>
 				<div class="modal-body">
-					<h4 class="red-text"><?php 
-					 	if(isset($_COOKIE["loginFail"])) {
-							 setcookie("loginFail",$_COOKIE["loginFail"],time()-1);
-							 unset($_COOKIE["loginFail"]);
-							 echo "Bad Password/Username";
-						 }
+					<h4 class="red-text">
+					<?php
+					if(isset($_COOKIE["loginFail"])) {
+						setcookie("loginFail",$_COOKIE["loginFail"],time()-1);
+						unset($_COOKIE["loginFail"]);
+						echo "Bad Password/Username".PHP_EOL;
+						echo "<script>jQuery( function(){jQuery('#myModal').modal();} )</script>";
+					}
 					 ?></h4>
 					<label for="username">Username:</label>
 					<input type="text" name="username">
@@ -54,7 +56,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary">Save changes</button>
+					<button type="submit" class="btn btn-primary">Login</button>
 				</div>
 			</div>
 		</form>
