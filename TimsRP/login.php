@@ -33,5 +33,5 @@
         setcookie("loginFail",TRUE, time()+60);
     }
 	
-	header("Location: index.php");
+	header("Location: myGames.php");
 ?>

@@ -25,6 +25,7 @@
                 <h3><b>Game Name: </b></h3><input type="text" id = "gameName" name="gameName" style="width:50%"><br/>
                 <h4><b>Description: </b></h4>
                 <textarea name="gamedescription" id = "gamedescription" cols="60" rows="2" placeholder="A brief description of your RP to get players interested and describe the adventure!"></textarea>
+				<h3><b>Image Link: </b></h3><input type="text" id="gameImg" name="gameImg" style="width:50%"><br/>
                 <br/><br/>
                 <h4><b>Participants: </b></h4><hr>
                 <table id = "addPlayerList">

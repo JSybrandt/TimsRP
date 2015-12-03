@@ -10,21 +10,18 @@
         die("Connection failed: ".$conn->connect_error);
     }
     $conn->autocommit(FALSE);
-    global $row;
-    
+        
     $user = $_COOKIE["loggedInUID"];
-    //$gameid = $_POST["gameid"];
+    //$gameid = $_GET["gameid"];
     $gameid = "test";
     
     $sql = "SELECT * FROM games WHERE adminuserid='".$user."'";
-    // echo $sql."<br/>";
     $result = $conn->query($sql);
     if($result === FALSE || $result->num_rows === 0) {
         //header("Location: index.php");
     }
     
     $row = $result->fetch_assoc();
-    // print_r($row);
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +68,6 @@
                             while($newRow = $results->fetch_assoc()) {
                                 $players[] = $newRow["userid"];
                             }
-                            // echo "<pre>";
-                            // print_r($players);
-                            // echo "</pre>";
                         }
                         $stmt->close();
                         

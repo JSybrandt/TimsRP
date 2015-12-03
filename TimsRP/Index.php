@@ -1,5 +1,9 @@
 ﻿<?php
-    session_start();     
+    session_start();
+    if(isset($_COOKIE["loggedInUID"])) {
+        header("Location: myGames.php"); //Prevent user from trying to register while logged in.
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,32 +28,46 @@
         <h1>User Registration</h1>
         <form action="registration.php" name="regform" id="regform" method="post">
             <label for="firstname">First name:</label>
-            <input type="text" name="firstname">
+            <span class="red-text firstname hidden">First name invalid</span>
+            <br>
+            <input type="text" name="firstname" id="firstname">
             <br>
             <label for="lastname">Last name:</label>
-            <input type="text" name="lastname">
+            <span class="red-text lastname hidden">Last name invalid</span>
             <br>
-            <label for="username">Username:</label> <br/>
-            <input type="text" name="username">
+            <input type="text" name="lastname" id="lastname">
             <br>
-            <label for="email">Email:</label> <br/>
-            <input type="email" name="email">
+            <label for="username">Username:</label>
+            <span class="red-text regname hidden">Username invalid</span>
             <br>
-            <label for="sex">Sex:</label><br/>
+            <input type="text" name="username" id="regname">
+            <br>
+            <label for="email">Email:</label>
+            <span class="red-text email hidden">Email invalid</span>
+            <br>
+            <input type="email" name="email" id="email">
+            <br>
+            <label for="sex">Sex:</label>
+            <span class="red-text sex hidden">Sex required</span>
+            <br>
             <div class="radiogroup">
                 <div class="fieldgroup">
-                    <input type="radio" name="sex" value="male"> Male
+                    <input type="radio" name="sex" value="male" id="male"> Male
                 </div>
                 <div class="fieldgroup">
-                    <input type="radio" name="sex" value="female"> Female
+                    <input type="radio" name="sex" value="female" id="female"> Female
                 </div>
             </div>
             <br>
             <label for="DOB">Date of birth:</label>
-            <input type="date" name="DOB">
+            <span class="red-text DOB hidden">DOB invalid</span>
+            <br>
+            <input type="date" name="DOB" id="DOB">
             <br>
             <label for="password">Password:</label>
-            <input type="password" name="password">
+            <span class="red-text regpassword hidden">Password invalid</span>
+            <br>
+            <input type="password" name="password" id="regpassword">
             <br>
             <br>
             <input type="submit" value="Register" class="btn btn-success">
@@ -62,5 +80,6 @@
             </div>
         </div>
     </footer>
+    <script src="js/index.js"></script>
 </body>
 </html>
