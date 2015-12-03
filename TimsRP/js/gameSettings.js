@@ -1,6 +1,5 @@
 
 var settings = {
-	totalPlayers: 3, 		// Hard-set until we have a real list of players
 	init: function () {
 		
 		$(".rmvPlayer").each(function() {
@@ -16,13 +15,12 @@ var settings = {
 				.fail(function(jqHXR){
 					console.log("ERROR: Query failed");
 				});
-
 			});
 		});
 		$(".rmvRequest").each(function() {
 			var name = $(this).data("player");
 			var game = $(this).data("gameid");
-			var url = window.location.href;
+
 			$(this).on("click",function(){
 				var str = "rmvPlayer.php?userid="+name+"&gameid="+game+"&request=true"; //"&return="+url+
 				$.get(str)
@@ -42,7 +40,7 @@ var settings = {
 			var url = window.location.href;
 			//console.log("Player: "+name+" Game: "+game);
 			$(this).on("click",function(){
-				var str = "addPlayer.php?userid="+name+"&gameid="+game; //"&return="+url+
+				var str = "acptPlayer.php?userid="+name+"&gameid="+game; //"&return="+url+
 				$.get(str)
 				.done(function(data) {
 					$("#"+name+"Request").empty();
@@ -73,6 +71,45 @@ var settings = {
 
 			});
 		});	
+		
+		$("#invBtn").on("click", function(){
+			// var player = document.getElementById("AddPlayerName").value;
+			var player = $("#inviteName").val();
+			var game = $("#gameid").val();
+			if (player  === '') {
+				$(".invite").text("No username");
+				$(".invite").removeClass("hidden");
+				return false;
+			}
+			else {
+				$(".invite").toggleClass("hidden", true);
+			}
+	
+			//do additional backend verification before proceeding to lookup the user's email
+	
+			var jqxhr = $.post( "dbEdits/playerExists.php",{userid:player});
+			jqxhr.done(function(msg){if(msg!=0){
+				
+				$.post( "dbEdits/addPlayerToGame.php",{userid:player,gameid:game})
+				.done(function() {
+					var str = "<tr id='"+player+"'>"+
+						"<td>"+player+"</td><td>Active</td><td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-gameid='"+game+"' data-player='"+player+"'>Remove</a></td></tr>";
+					$("#playerTable").append(str);
+					//alert(data);
+				})
+				.fail(function(jqHXR){
+					
+				$(".invite").text("No username");
+				$(".invite").removeClass("hidden");
+					console.log("ERROR: Query failed");
+				});
+			}else  {
+				$(".invite").text("User does not exist");
+				$(".invite").removeClass("hidden");
+			}
+			});
+			jqxhr.fail(function(){alert("Error getting players.")});	
+		})
 		
 		
 	}

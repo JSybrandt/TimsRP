@@ -76,8 +76,8 @@
                 
                 $stmt->close();
     
-                $_SESSION["loggedInUID"] = $user;
-                echo "Welcome ".$_POST["firstname"]." ".$_POST["lastname"]." with username ".$_SESSION["loggedInUID"]."!<br/>";
+                $_COOKIE["loggedInUID"] = $user;
+                echo "Welcome ".$_POST["firstname"]." ".$_POST["lastname"]." with username ".$_COOKIE["loggedInUID"]."!<br/>";
                 echo "You have successfully signed up!<br/>";
             }
         }
