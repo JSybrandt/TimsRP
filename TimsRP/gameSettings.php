@@ -9,9 +9,11 @@
     if($conn->connect_error) {
         die("Connection failed: ".$conn->connect_error);
     }
+    $conn->autocommit(FALSE);
     
-    $user = $_SESSION["loggedInUID"];
+    $user = $_COOKIE["loggedInUID"];
     //$gameid = $_POST["gameid"];
+    $gameid = "test";
     
     $sql = "SELECT adminuserid FROM games WHERE userid='".$user."'";
     echo $sql."<br/>";
@@ -57,10 +59,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        
-                            
-                        
+                        <?php
+                        $players = [];
+                        $stmt = $conn->prepare("SELECT userid FROM game_users WHERE gameid=?");
+				        $stmt->bind_param("s",$gameid);
+                        if($stmt->execute()) {
+                            $results = $stmt->get_result();
+                            while($row = $results->fetch_assoc()) {
+                                $players[] = $row["userid"];
+                            }
+                            // echo "<pre>";
+                            // print_r($players);
+                            // echo "</pre>";
+                        }
+                        $stmt->close();
+                        foreach($players as $player) {
+                            echo "<tr id='".$player."'>";
+                            echo "<td>".$player."</td>";
+                            echo "<td>Active</td>";
+                            echo "<td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-player='".$player."'>Remove</a></td>";
+                            echo "</tr>";
+                        }
                         ?>
                         
                         <!--<tr id="player1">
