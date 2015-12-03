@@ -38,7 +38,6 @@ var settings = {
 			var name = $(this).data("player");
 			var game = $(this).data("gameid");
 			var url = window.location.href;
-			//console.log("Player: "+name+" Game: "+game);
 			$(this).on("click",function(){
 				var str = "acptPlayer.php?userid="+name+"&gameid="+game; //"&return="+url+
 				$.get(str)
@@ -57,7 +56,6 @@ var settings = {
 			var sys = $(this).data("sys");
 			var game = $(this).data("game");
 			var url = window.location.href;
-			//console.log("Sys: "+sys+" Game: "+game);
 			$(this).on("click",function(){
 				var str = "chngSys.php?sys="+sys+"&gameid="+game+"&return="+url;
 				$.get(str)
@@ -73,7 +71,6 @@ var settings = {
 		});	
 		
 		$("#invBtn").on("click", function(){
-			// var player = document.getElementById("AddPlayerName").value;
 			var player = $("#inviteName").val();
 			var game = $("#gameid").val();
 			if (player  === '') {
@@ -88,30 +85,45 @@ var settings = {
 			//do additional backend verification before proceeding to lookup the user's email
 	
 			var jqxhr = $.post( "dbEdits/playerExists.php",{userid:player});
-			jqxhr.done(function(msg){if(msg!=0){
-				
-				$.post( "dbEdits/addPlayerToGame.php",{userid:player,gameid:game})
-				.done(function() {
-					var str = "<tr id='"+player+"'>"+
-						"<td>"+player+"</td><td>Active</td><td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-gameid='"+game+"' data-player='"+player+"'>Remove</a></td></tr>";
-					$("#playerTable").append(str);
-					//alert(data);
-				})
-				.fail(function(jqHXR){
-					
-				$(".invite").text("No username");
-				$(".invite").removeClass("hidden");
-					console.log("ERROR: Query failed");
-				});
-			}else  {
-				$(".invite").text("User does not exist");
-				$(".invite").removeClass("hidden");
-			}
+			jqxhr.done(function(msg){
+				if(msg!=0){
+					$.post( "dbEdits/addPlayerToGame.php",{userid:player,gameid:game})
+					.done(function() {
+						var str = "<tr id='"+player+"Row'>"+
+							"<td>"+player+"</td><td>Active</td><td class='center-text'><a class='btn btn-xs btn-danger id='"+player+"' rmvPlayer' data-gameid='"+game+"' data-player='"+player+"'>Remove</a></td></tr>";
+						$("#playerTable").append(str);
+						
+						var name = $("#"+player).data("player");
+						var game = $("#"+player).data("gameid");
+						var url = window.location.href;
+						$("#"+player).on("click",function(){
+							var str = "rmvPlayer.php?userid="+name+"&gameid="+game+"&return="+url;
+							$.get(str)
+							.done(function(data) {
+								$("#"+name).empty();
+							})
+							.fail(function(jqHXR){
+								console.log("ERROR: Query failed");
+							});
+						});
+					})
+					.fail(function(jqHXR){
+						$(".invite").text("No username");
+						$(".invite").removeClass("hidden");
+						console.log("ERROR: Query failed");
+					});
+				}
+				else {
+					$(".invite").text("User does not exist");
+					$(".invite").removeClass("hidden");
+				}
 			});
-			jqxhr.fail(function(){alert("Error getting players.")});	
-		})
-		
-		
+			jqxhr.fail(function(){
+				$(".invite").text("Play");
+				$(".invite").removeClass("hidden");
+				console.log("ERROR: Query failed");
+			});
+		});	
 	}
 }
 
