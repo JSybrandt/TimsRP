@@ -16,6 +16,7 @@
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campaigns <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="myGames.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> My Campaigns</a></li>
+							<li><a href="requestJoinGame.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Request to Join Game</a></li>
 							<li><a href="newGame.php"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Create Campaign</a></li>
 						</ul>
 					</li>
