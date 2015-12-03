@@ -108,6 +108,18 @@
                                 }
                                 $stmt2->close();
 
+                                $stmt2 = $conn->prepare("SELECT COUNT(gameid) FROM `game_requests` WHERE gameid=? AND userid=?");
+                                $stmt2->bind_param("ss",$g,$user);
+
+                                $hasAlreadyRequested = '';
+                                if ($stmt2->execute()){
+                                    $results2 = $stmt2->get_result();
+                                    $newRow2 = $results2->fetch_assoc();
+                                    $hasAlreadyRequested = $newRow2["COUNT(gameid)"];
+                                    
+                                }
+                                $stmt2->close();
+
                                 echo '<tr>';
                                 echo    '<td class="gameName">';
                                 
@@ -116,7 +128,11 @@
                                 echo        '<h4><a href="game.php?gameid='.$g.'"><b>'.$g.'</b></a></h4>';
                                 echo        '<i>'.$description.'</i><br>';
                                 echo        $gameNumPlayers[$index].' members';
-                                echo        '<button id="requestRP'.$index.'" onclick="RJG.requestgame(\''.$g.'\', \''.$user.'\', \'requestRP'.$index.'\')">Request</a>';
+                                if ($hasAlreadyRequested == '1')
+                                    echo        '<button id="requestRP'.$index.'" onclick="RJG.requestgame(\''.$g.'\', \''.$user.'\', \'requestRP'.$index.'\')">Request Sent!</a>';
+                                else
+                                    echo        '<button id="requestRP'.$index.'" onclick="RJG.requestgame(\''.$g.'\', \''.$user.'\', \'requestRP'.$index.'\')">Request</a>';
+                                
                                 echo        '</div>';
                                 echo    '</td>';
 
