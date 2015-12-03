@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>My RPs</title>
+    <title>Join a Role Play</title>
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -33,7 +33,7 @@
 <body>
     <?php include ("navbar.php"); ?>
      <div class="col-md-1">
-        <h1><b>My Role Plays</b></h1>
+        <h1><b>Join a Role Play</b></h1>
         <a href ="newGame.php" id = "newRP" class ="btn btn-success">START A NEW RP</a>
     </div>
     <br/><br/>
@@ -42,9 +42,9 @@
             <tbody>
 
                 <?php
-                    $gameid = [];
+                    $gameid = [];//all games we are not yet a part of
                     $gameNumPlayers = [];
-                    $stmt = $conn->prepare("SELECT gameid FROM game_users WHERE userid=?");
+                    $stmt = $conn->prepare("SELECT * FROM games WHERE gameid NOT IN ( SELECT gameid FROM game_users WHERE userid = ?)");
                     $stmt->bind_param("s",$user);
                     if($stmt->execute()) {
                         $results = $stmt->get_result();
@@ -53,6 +53,7 @@
                         }
                     }
                     $stmt->close();
+
 
                     foreach($gameid as $g){
                         $num = 0;
@@ -122,8 +123,13 @@
                                 echo        $repliesCount." replies";
                                 echo    '</td>';
                                 echo    '<td class = "gameUpdateHistory">';
-                                echo        'Updated by '.$lastPostName.'</a>';
-                                echo        '<br/><p style= "color:gray">Last updated on '.$lastTimeOfPost.'</p>';
+                                if ($lastTimeOfPost != ''){
+                                    echo        'Updated by '.$lastPostName.'</a>';
+                                    echo        '<br/><p style= "color:gray">Last updated on '.$lastTimeOfPost.'</p>';
+                                }
+                                else{
+                                    echo 'Has not been updated recently';
+                                }
                                 echo    '</td>';
                                 echo '</tr>';
                             }

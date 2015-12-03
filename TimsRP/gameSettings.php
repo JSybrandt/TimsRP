@@ -1,6 +1,10 @@
 ﻿<?php
     session_start();
     
+    if(!isset($_COOKIE["gameid"])) {
+        header("Location: index.php");
+    }
+    
     $servername = "localhost";
     $susername = "root";
     $password = "";
@@ -12,8 +16,8 @@
     $conn->autocommit(FALSE);
         
     $user = $_COOKIE["loggedInUID"];
-    //$gameid = $_GET["gameid"];
-    $gameid = "test";
+    $gameid = $_COOKIE["gameid"];
+    //$gameid = "test";
     
     $sql = "SELECT * FROM games WHERE adminuserid='".$user."'";
     $result = $conn->query($sql);
@@ -46,10 +50,12 @@
             <!--List of active players-->
             <div class="col-md-5 div-box">
                 <h4><b>Players in Campaign</b></h4>
-                <form>
-                    <input id="inviteName" type="text" placeholder="Username" /> <button type="submit" class="btn btn-default">Invite</button>
-                </form>
-                <table class="table">
+                <!--<form action="dbEdits/addPlayerToGame.php" name="invform" id="invform" method="post">-->
+                    <input id="inviteName" type="text" placeholder="Username" name="userid" /> <button id="invBtn" type="button" class="btn btn-default">Invite</button>
+                    <input type="hidden" id="gameid" name="gameid" value="<?php echo $gameid; ?>"/>
+                    <span class="red-text invite hidden">Username invalid</span>
+                <!--</form>-->
+                <table class="table" id="playerTable">
                     <thead>
                         <tr>
                             <th class="center-text">Player Name</th>
