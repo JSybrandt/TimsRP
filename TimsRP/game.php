@@ -3,9 +3,6 @@
 	
 
 	if(isset($_GET["gameid"])){
-		
-	
-
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -25,14 +22,10 @@
 	
 	$sqlcheck = "SELECT * FROM games WHERE adminuserid='".$user."' AND gameid='".$game."'";
 	$resultadmin = $conn->query($sqlcheck);
-	if($resultadmin === FALSE) {
-		
-	}
-	else if($resultadmin->num_rows > 0) {
-		setcookie("gameid",$game,)
+	if($resultadmin === FALSE && $resultadmin->num_rows > 0) {
+		setcookie("gameid",$game,time()+60*60*24*30);
 	}
          	
-	
 	if ($stmt = $conn->prepare("SELECT gameid,description,img FROM `timsrp`.`games` WHERE gameid=?")) {
 		/* bind parameters for markers */
 		$stmt->bind_param("s", $_GET["gameid"]);
