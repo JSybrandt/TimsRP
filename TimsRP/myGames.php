@@ -1,5 +1,18 @@
 <?php
-    session_start();     
+    session_start();
+    
+    $servername = "localhost";
+    $susername = "root";
+    $password = "";
+    $db = "timsrp";
+    $conn = new mysqli($servername,$susername,$password,$db);
+    if($conn->connect_error) {
+        die("Connection failed: ".$conn->connect_error);
+    }
+    $conn->autocommit(FALSE);
+        
+    $user = $_COOKIE["loggedInUID"];
+
 ?>
 
 <!DOCTYPE html>
@@ -27,70 +40,55 @@
     <div id="body" class="">
         <table id = "gameList">
             <tbody>
-                <tr>
-                    <td class="gameName">
-                        <img class = "RPThumb" src="images/game.png" alt="thumbnail">
-                        <div>
-                            <h4><a href="game.php"><b>Dr. Wheiz's Zany Island Adventure</b></a></h4>
-                            25 members, 4 here now
-                        </div>
-                    </td>
-                    <td class="gameRepliesCount">
-                        10 replies
-                    </td>
-                    <td class="gameUpdateHistory">
-                        Updated by <a href="profile.php">Nalta</a>
-                        <br/><p style="color:gray">about 25 min ago</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="gameName">
-                        <img class = "RPThumb" src="images/game2.png" alt="thumbnail">
-                        <div>
-                            <h4><a href="game.php"><b>Freaky C's Dank Memes</b></a></h4>
-                            10 members, 1 here now
-                        </div>
-                    </td>
-                    <td class="gameRepliesCount">
-                        9 replies
-                    </td>
-                    <td class="gameUpdateHistory">
-                        Updated by <a href="profile.php">FalseEcho</a>
-                        <br/><p style="color:gray">Just now</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="gameName">
-                        <img class = "RPThumb" src="images/game3.png" alt="thumbnail">
-                        <div>
-                            <h4><a href="game.php"><b>Zard's Ghouls</b></a></h4>
-                            17 members, 3 here now
-                        </div>
-                    </td>
-                    <td class="gameRepliesCount">
-                        20 replies
-                    </td>
-                    <td class="gameUpdateHistory">
-                        Updated by <a href="profile.php">Reason</a>
-                        <br/><p style="color:gray">about 35 min ago</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="gameName">
-                        <img class = "RPThumb" src="images/game.png" alt="thumbnail">
-                        <div>
-                            <h4><a href="game.php"><b>Ginger Zombies</b></a></h4>
-                            12 members, 2 here now
-                        </div>
-                    </td>
-                    <td class="gameRepliesCount">
-                        15 replies
-                    </td>
-                    <td class="gameUpdateHistory">
-                        Updated by <a href="profile.php">Astral</a>
-                        <br/><p style="color:gray">about 5 min ago</p>
-                    </td>
-                </tr>
+
+                <?php
+                    $gameid = [];
+                    $requests = [];
+                    $stmt = $conn->prepare("SELECT gameid FROM game_users WHERE userid=?");
+                    $stmt->bind_param("s",$user);
+                    if($stmt->execute()) {
+                        $results = $stmt->get_result();
+                        while($newRow = $results->fetch_assoc()) {
+                            $gameid[] = $newRow["gameid"];
+                        }
+                    }
+                    $stmt->close();
+                    
+
+                    foreach($gameid as $g){
+                        $stmt = $conn->prepare("SELECT * FROM games WHERE gameid=?");
+                        $stmt->bind_param("s",$g);
+                        if($stmt->execute()) {
+                            $results = $stmt->get_result();
+                            while($newRow = $results->fetch_assoc()) {
+                                $img = $newRow["img"];
+                                $description = $newRow["description"];
+
+                                echo '<tr>';
+                                echo    '<td class="gameName">';
+                                
+                                echo        '<img class = "RPThumb" src="'.$img.'" alt = "thumbnail">';
+                                echo        '<div>';
+                                echo        '<h4><a href="game.php"><b>'.$description.'</b></a></h4>';
+                                echo        '25 members, 4 here now';
+                                echo        '</div>';
+                                echo    '</td>';
+
+                                echo    '<td class = "gameRepliesCount">';
+                                echo        "10 replies";
+                                echo    '</td>';
+                                echo    '<td class = "gameUpdateHistory">';
+                                echo        'Updated by <a href="profile.php">Nalta</a>';
+                                echo        '<br/><p style= "color:gray">about 25 min ago</p>';
+                                echo    '</td>';
+                                echo '</tr>';
+                            }
+                        }
+                        $stmt->close();
+                    }
+                    
+                ?>
+
             </tbody>
         </table>
     </div>
