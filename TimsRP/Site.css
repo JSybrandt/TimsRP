@@ -170,7 +170,7 @@ li.open > a.dropdown-toggle {
 
 #newGameField{
     text-align: center;
-    width:fit;
+    width:100%;
 }
 
 #addPlayerList{
@@ -190,7 +190,7 @@ li.open > a.dropdown-toggle {
 }
 
 .gameName div{
-    float:center;
+    float: left;
 }
 
 .postContent{
