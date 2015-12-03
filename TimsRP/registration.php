@@ -1,65 +1,55 @@
 <?php 
-    session_start();
 
-    if(!isset($_POST["firstname"], $_POST["lastname"],$_POST["email"],$_POST["sex"],$_POST["DOB"],$_POST["password"], $_POST["username"])) {
-        header("Location: index.php");
-    }        
-            // echo"<pre>";
-        // print_r($_POST);
-        // echo"</pre>";
+if(!isset($_POST["firstname"], $_POST["lastname"],$_POST["email"],$_POST["sex"],$_POST["DOB"],$_POST["password"], $_POST["username"])) {
+    header("Location: index.php");
+}        
         
-        $error;
-        $sex;
-        if($_POST["sex"] === "male") { $sex = 1; }
-        else { $sex = 0; }
-        $first = $_POST["firstname"];
-        $last = $_POST["lastname"];
-        $email = $_POST["email"];
-        $dob = $_POST["DOB"];
-        $pswd = $_POST["password"];
-        $user = $_POST["username"];
-		$picture = "http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png";
+$error;
+$sex;
+if($_POST["sex"] === "male") { $sex = 1; }
+else { $sex = 0; }
+$first = $_POST["firstname"];
+$last = $_POST["lastname"];
+$email = $_POST["email"];
+$dob = $_POST["DOB"];
+$pswd = $_POST["password"];
+$user = $_POST["username"];
+$picture = "http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png";
+
+$servername = "localhost";
+$susername = "root";
+$password = "";
+$db = "timsrp";
+$conn = new mysqli($servername,$susername,$password,$db);
+if($conn->connect_error) {
+    die("Connection failed: ".$conn->connect_error);
+}
+
+$sql = "SELECT userid FROM users WHERE email='".$_POST["email"]."' OR userid='".$user."'";
+$result = $conn->query($sql);
+if($result->num_rows > 0) {
+    $error = "Error: Email or Username already exists<br/>";
+}
+else {
+    $row = $result->fetch_assoc();
+    $conn->autocommit(FALSE);
         
+    $stmt = $conn->prepare("INSERT INTO users (userid,firstname,lastname,email,picture,sex,birthday,password) VALUES (?,?,?,?,?,?,?,?)");
+    if($stmt === FALSE) {
+        $error = "Failed to prepare statement<br/>";
+    }
+    else {
+        $stmt->bind_param("sssssiss",$user,$first,$last,$email,$picture,$sex,$dob,$pswd);
         
-        $servername = "localhost";
-        $susername = "root";
-        $password = "";
-        $db = "timsrp";
-        $conn = new mysqli($servername,$susername,$password,$db);
-        if($conn->connect_error) {
-            die("Connection failed: ".$conn->connect_error);
-        }
+        $stmt->execute();
+        $conn->commit();
         
-        $sql = "SELECT userid FROM users WHERE email='".$_POST["email"]."' OR userid='".$user."'";
-        //echo $sql."<br/>";
-        $result = $conn->query($sql);
-        //echo "printing: ";
-        //print_r($result);
-        if($result->num_rows > 0) {
-            $error = "Error: Email already exists<br/>";
-        }
-        else {
-            $row = $result->fetch_assoc();
-            $conn->autocommit(FALSE);
-                
-            //$stmt = $conn->prepare("INSERT INTO users (userid, firstname,lastname,email,sex,birthday,password) VALUES (DEFAULT,?,?,?,?,?,?)");
-            $stmt = $conn->prepare("INSERT INTO users (userid,firstname,lastname,email,picture,sex,birthday,password) VALUES (?,?,?,?,?,?,?,?)");
-            if($stmt === FALSE) {
-                $error = "Failed to prepare statement<br/>";
-            }
-            else {
-                //echo "It prepared!<br/>";
-                $stmt->bind_param("sssssiss",$user,$first,$last,$email,$picture,$sex,$dob,$pswd);
-                
-                $stmt->execute();
-                $conn->commit();
-                
-                $stmt->close();
-    
-                setcookie("loggedInUID",$user, time()+60*60*24*30);
-            }
-        }
-        $conn->close();
+        $stmt->close();
+
+        setcookie("loggedInUID",$user, time()+60*60*24*30);
+    }
+}
+$conn->close();
 ?>
 
 <!DOCTYPE html>
