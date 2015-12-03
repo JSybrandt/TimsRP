@@ -27,6 +27,7 @@
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="requestJoinGame.js"></script>
 
 </head>
 
@@ -69,7 +70,6 @@
 
                         $gameNumPlayers[] = $num;
                     }
-                    
 
                     $index = 0;
                     foreach($gameid as $g){
@@ -116,6 +116,9 @@
                                 echo        '<h4><a href="game.php?gameid='.$g.'"><b>'.$g.'</b></a></h4>';
                                 echo        '<i>'.$description.'</i><br>';
                                 echo        $gameNumPlayers[$index].' members';
+                                echo        '<form name="RequestMembership" id="RequestMembership" onsubmit="return addRequest()" action="dbEdits/addPlayerToRequest.php" method="post">';
+                                echo            '<input type="submit" value="Request Membership" style="width:150px">';
+                                echo        '</form>';
                                 echo        '</div>';
                                 echo    '</td>';
 

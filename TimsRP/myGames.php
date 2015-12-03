@@ -68,7 +68,6 @@
 
                         $gameNumPlayers[] = $num;
                     }
-                    
 
                     $index = 0;
                     foreach($gameid as $g){
