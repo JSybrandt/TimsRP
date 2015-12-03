@@ -40,6 +40,7 @@
 				<div class="modal-body">
 					<h4 class="red-text"><?php 
 					 	if(isset($_COOKIE["loginFail"])) {
+							 setcookie("loginFail",$_COOKIE["loginFail"],time()-1);
 							 unset($_COOKIE["loginFail"]);
 							 echo "Bad Password/Username";
 						 }
