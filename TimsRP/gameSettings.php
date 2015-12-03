@@ -10,17 +10,21 @@
         die("Connection failed: ".$conn->connect_error);
     }
     $conn->autocommit(FALSE);
+    global $row;
     
     $user = $_COOKIE["loggedInUID"];
     //$gameid = $_POST["gameid"];
     $gameid = "test";
     
-    $sql = "SELECT adminuserid FROM games WHERE userid='".$user."'";
-    echo $sql."<br/>";
+    $sql = "SELECT * FROM games WHERE adminuserid='".$user."'";
+    // echo $sql."<br/>";
     $result = $conn->query($sql);
     if($result === FALSE || $result->num_rows === 0) {
         //header("Location: index.php");
     }
+    
+    $row = $result->fetch_assoc();
+    // print_r($row);
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +43,7 @@
 </head>
 <body>
 <?php include ("navbar.php"); ?>
-<?php 
 
-?>
 <div id="body" class="container">
         <div class="row">
             <!--List of active players-->
@@ -61,42 +63,45 @@
                     <tbody>
                         <?php
                         $players = [];
+                        $requests = [];
                         $stmt = $conn->prepare("SELECT userid FROM game_users WHERE gameid=?");
 				        $stmt->bind_param("s",$gameid);
                         if($stmt->execute()) {
                             $results = $stmt->get_result();
-                            while($row = $results->fetch_assoc()) {
-                                $players[] = $row["userid"];
+                            while($newRow = $results->fetch_assoc()) {
+                                $players[] = $newRow["userid"];
                             }
                             // echo "<pre>";
                             // print_r($players);
                             // echo "</pre>";
                         }
                         $stmt->close();
+                        
+                        $stmt = $conn->prepare("SELECT userid FROM game_requests WHERE gameid=?");
+				        $stmt->bind_param("s",$gameid);
+                        if($stmt->execute()) {
+                            $results = $stmt->get_result();
+                            while($newRow = $results->fetch_assoc()) {
+                                $requests[] = $newRow["userid"];
+                            }
+                        }
+                        $stmt->close();
                         foreach($players as $player) {
                             echo "<tr id='".$player."'>";
                             echo "<td>".$player."</td>";
                             echo "<td>Active</td>";
-                            echo "<td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-player='".$player."'>Remove</a></td>";
+                            echo "<td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-gameid='".$row["gameid"]."' data-player='".$player."'>Remove</a></td>";
+                            echo "</tr>";
+                        }
+                        foreach($requests as $request) {
+                            echo "<tr id='".$request."'>";
+                            echo "<td>".$request."</td>";
+                            echo "<td>Active</td>";
+                            echo "<td id='".$request."Request' class='center-text'><a class='btn btn-xs btn-danger rmvRequest' data-gameid='".$row["gameid"]."' data-player='".$request.
+                            "'>Remove</a> <a class='btn btn-xs btn-success addRequest' data-gameid='".$row["gameid"]."' data-player='".$request."'>Accept</a></td>";
                             echo "</tr>";
                         }
                         ?>
-                        
-                        <!--<tr id="player1">
-                            <td>John Doe</td>
-                            <td>Active</td>
-                            <td class="center-text"><a id="player1Rmv" class="btn btn-xs btn-danger">Remove</a></td>
-                        </tr>
-                        <tr id="player2">
-                            <td>Jane Doe</td>
-                            <td>Invited</td>
-                            <td class="center-text"><a id="player2Rmv" class="btn btn-xs btn-danger">Remove</a></td>
-                        </tr>
-                        <tr id="player3">
-                            <td>Friend Frank</td>
-                            <td id="player3Stat">Requested to join</td>
-                            <td class="center-text"><a id="player3Rmv" class="btn btn-xs btn-danger">Decline</a> <a id="player3Add" class="btn btn-xs btn-success">Accept</a></td>
-                        </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -123,32 +128,16 @@
                         </tr>
                         <tr>
                             <td>Game System</td>
-                            <td id="rpStat">Legend of the Five Rings</td>
+                            <td id="rpStat"><?php echo $row["systemname"]; ?></td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Change <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a data-dropdown="rp" href="#" class="dropBtn">Legend of the Five Rings</a></li>
-                                        <li><a data-dropdown="rp" href="#" class="dropBtn">Dungeons and Dragons</a></li>
-                                        <li><a data-dropdown="rp" href="#" class="dropBtn">Warhammer 40k</a></li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Notifications</td>
-                            <td id="notifStat">All Messages</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Change <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a data-dropdown="notif" href="#" class="dropBtn">All Messages</a></li>
-                                        <li><a data-dropdown="notif" href="#" class="dropBtn">Private Messages Only</a></li>
-                                        <li><a data-dropdown="notif" href="#" class="dropBtn">No Messages</a></li>
+                                        <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="1" data-game="<?php echo $row["gameid"]; ?>">Legend of the Five Rings</a></li>
+                                        <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="2" data-game="<?php echo $row["gameid"]; ?>">Dungeons and Dragons</a></li>
+                                        <li><a data-dropdown="rp" href="#" class="dropBtn sysBtn" data-sys="3" data-game="<?php echo $row["gameid"]; ?>">Warhammer 40k</a></li>
                                     </ul>
                                 </div>
                             </td>
