@@ -100,7 +100,7 @@ var settings = {
 							var str = "rmvPlayer.php?userid="+player+"&gameid="+game+"&return="+url;
 							$.get(str)
 							.done(function(data) {
-								$("#"+player+"Row").empty();
+								$("#"+player+"Row").remove();
 							})
 							.fail(function(jqHXR){
 								console.log("ERROR: Query failed");
