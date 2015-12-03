@@ -1,5 +1,9 @@
 ﻿<?php
-    session_start();     
+    session_start();
+    if(isset($_COOKIE["loggedInUID"])) {
+        header("Location: myGames.php"); //Prevent user from trying to register while logged in.
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <?php include ("navbar.php"); ?>
+    <?php include ("navbar.php");?>
     <div id="body" class="col-md-8">
         <img src="gameHeader.png" class="img-responsive img-center" alt="Front Page Image"/>
     </div>

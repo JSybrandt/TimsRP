@@ -1,6 +1,8 @@
 <?php
     session_start();    
 	
-	unset($_SESSION["loggedInUID"]); 
+	setcookie("loggedInUID",$_COOKIE["loggedInUID"],time()-1);
+	unset($_COOKIE["loggedInUID"]);
+	
 	header("Location: index.php");
 ?>
