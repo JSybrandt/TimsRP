@@ -3,6 +3,10 @@
         include ("usernav.php");
     }
     else {
+        if($_SERVER["PHP_SELF"] !== "/timsrp/timsrp/index.php") {
+            header("Location: index.php");
+            exit;
+        }
         include ("logginnav.php");
     }
 ?>

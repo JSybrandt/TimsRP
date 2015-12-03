@@ -22,6 +22,7 @@
     </div>
     <div class="col-md-4" id="signupform">
         <h1>User Registration</h1>
+        <?php echo $_SERVER["PHP_SELF"]."<br/>"; ?>
         <form action="registration.php" name="regform" id="regform" method="post">
             <label for="firstname">First name:</label>
             <input type="text" name="firstname">
