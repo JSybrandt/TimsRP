@@ -1,6 +1,4 @@
 <?php
-
-	//EXPECTS $_GET["gameid"] to be set;
     session_start();     
 	
 
@@ -20,7 +18,20 @@
 	if ($conn->connect_error) {
 		echo "connerr";
 		die("Connection failed: " . $conn->connect_error);
-	} 	
+	}
+	
+	$user = $_COOKIE["loggedInUID"];
+	$game = $_POST["gameid"];
+	
+	$sqlcheck = "SELECT * FROM games WHERE adminuserid='".$user."' AND gameid='".$game."'";
+	$resultadmin = $conn->query($sqlcheck);
+	if($resultadmin === FALSE) {
+		
+	}
+	else if($resultadmin->num_rows > 0) {
+		setcookie("gameid",$game,)
+	}
+         	
 	
 	if ($stmt = $conn->prepare("SELECT gameid,description,img FROM `timsrp`.`games` WHERE gameid=?")) {
 		/* bind parameters for markers */
