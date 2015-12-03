@@ -25,7 +25,7 @@
 		
 		echo "<script>
 		alert(\"Your profile has been updated!\");
-		window.location.href='http://localhost/Tims%20RP/TimsRP/profile.php';
+		window.location.href='http://localhost/TimsRP/TimsRP/profile.php';
 		</script>";	
 	}else echo "faileds statement";
 	$conn->close();
