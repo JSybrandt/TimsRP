@@ -21,7 +21,7 @@
         else {
             $sql = "DELETE FROM game_users WHERE userid='".$user."' AND gameid='".$game."'";
         }
-        //$sql = "DELETE FROM game_users WHERE userid='".$user."'";
+        
         $result = $conn->query($sql);
         if($result === FALSE) {
             header("HTTP/1.1 500 Internal Server Error");

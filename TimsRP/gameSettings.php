@@ -90,7 +90,7 @@
                             echo "<tr id='".$player."'>";
                             echo "<td>".$player."</td>";
                             echo "<td>Active</td>";
-                            echo "<td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-gameid='".$row["gameid"]."' data-player='".$player."'>Remove</a></td>";
+                            echo "<td class='center-text'><a class='btn btn-xs btn-danger rmvPlayer' data-gameid='".$gameid."' data-player='".$player."'>Remove</a></td>";
                             echo "</tr>";
                         }
                         foreach($requests as $request) {
@@ -98,7 +98,7 @@
                             echo "<td>".$request."</td>";
                             echo "<td>Active</td>";
                             echo "<td id='".$request."Request' class='center-text'><a class='btn btn-xs btn-danger rmvRequest' data-gameid='".$row["gameid"]."' data-player='".$request.
-                            "'>Remove</a> <a class='btn btn-xs btn-success addRequest' data-gameid='".$row["gameid"]."' data-player='".$request."'>Accept</a></td>";
+                            "'>Remove</a> <a class='btn btn-xs btn-success addRequest' data-gameid='".$gameid."' data-player='".$request."'>Accept</a></td>";
                             echo "</tr>";
                         }
                         ?>

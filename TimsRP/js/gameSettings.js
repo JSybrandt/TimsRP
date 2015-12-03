@@ -6,6 +6,7 @@ var settings = {
 			var name = $(this).data("player");
 			var game = $(this).data("gameid");
 			var url = window.location.href;
+			console.log(name+" "+game);
 			$(this).on("click",function(){
 				var str = "rmvPlayer.php?userid="+name+"&gameid="+game+"&return="+url;
 				$.get(str)
