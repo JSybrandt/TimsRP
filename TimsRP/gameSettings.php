@@ -17,7 +17,6 @@
         
     $user = $_COOKIE["loggedInUID"];
     $gameid = $_COOKIE["gameid"];
-    //$gameid = "test";
     
     $sql = "SELECT * FROM games WHERE adminuserid='".$user."'";
     $result = $conn->query($sql);

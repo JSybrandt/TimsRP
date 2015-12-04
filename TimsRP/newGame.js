@@ -5,7 +5,12 @@ var newGame = {
 		document.getElementById("addMember").addEventListener("click", function() {newGame.AddPlayer()}, false);
 		document.getElementById("saveNewRP").addEventListener("click", function() {newGame.CreateRP()}, false);
 	},
-
+	setCookie: function (cname, cvalue, exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	},
 	UpdateEventListeners: function(){
 
 
@@ -115,6 +120,8 @@ var newGame = {
 					alert("failed to add "+userName +"\n"+msg);
 				});
 			});
+			
+			newGame.setCookie("gameid",gameName, 30);
 			
 			window.location = 'gameSettings.php';
 		});
