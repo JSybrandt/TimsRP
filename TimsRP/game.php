@@ -1,8 +1,8 @@
 <?php
-    session_start();     
+session_start();     
 	
 
-	if(isset($_GET["gameid"])){
+if(isset($_GET["gameid"])){
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
@@ -17,17 +17,15 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	$user = $_COOKIE["loggedInUID"];
-	$game = $_GET["gameid"];
+	$currentgame = $_GET["gameid"];
+	$currentuser = $_COOKIE["loggedInUID"];
 	
-	$sqlcheck = "SELECT * FROM games WHERE adminuserid='".$user."' AND gameid='".$game."'";
-	//print_r($sqlcheck);
-	
-	
+	$sqlcheck = "SELECT * FROM games WHERE adminuserid='".$currentuser."' AND gameid='".$currentgame."'";
+
 	$resultadmin = $conn->query($sqlcheck);
 	echo $resultadmin->num_rows;
 	if($resultadmin !== FALSE && $resultadmin->num_rows > 0) {
-		setcookie("gameid",$game,time()+60*60*24*30);
+		setcookie("gameid",$currentgame,time()+60*60*24*30);
 	}
          	
 	if ($stmt = $conn->prepare("SELECT gameid,description,img FROM `timsrp`.`games` WHERE gameid=?")) {
@@ -63,8 +61,7 @@
 		$stmt->close();
 	}else echo "failed statement";
 
-	$conn->close();
-	
+	$conn->close();	
 }
 	
 	
@@ -120,7 +117,7 @@
 				die("Connection failed: " . $conn->connect_error);
 			} 	
 			
-			if ($stmt = $conn->prepare("SELECT users.userid, content, picture FROM `game_post` JOIN USERS WHERE gameid=? ORDER BY timeofpost DESC")) {
+			if ($stmt = $conn->prepare("SELECT users.userid, content, picture FROM `game_post` JOIN USERS WHERE users.userid=game_post.userid && gameid=? ORDER BY timeofpost DESC")) {
 				/* bind parameters for markers */
 				$stmt->bind_param("s", $_GET["gameid"]);
 
