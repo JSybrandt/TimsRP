@@ -127,25 +127,10 @@ function checker (){
 function updatePicture(){
 	var img = $('#imgPick').find('input[name="dataFile"]').val();
 	$('#avatar').attr('src', img);
-	sleep(100);
-	var img = document.getElementById('avatar'); 
-	//or however you get a handle to the IMG
-	var width = img.clientWidth;
-	var height = img.clientHeight;	
 	
-	if(width<=150){
-		if(height <=150)
-		{
-			var imgUrl = $('#imgPick').find('input[name="dataFile"]').val();
-			var stuff = {url: newPass};
-			$.ajax(stuff);
-		}
-	}
-	else
-	{
-		alert("Image needs to be less than 150 pixels in height and width!");
-		$('#avatar').attr('src', "http://volumeone.org/uploads/image/article/007/060/7060/header_custom/7060_52121_688_blank_avatar_220.png" );
-	}
+	var imgUrl = $('#imgPick').find('input[name="dataFile"]').val();
+	var stuff = {url: newPass};
+	$.ajax(stuff);
 	
 	return false;
 }
