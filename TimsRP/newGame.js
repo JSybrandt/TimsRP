@@ -122,8 +122,10 @@ var newGame = {
 			});
 			
 			newGame.setCookie("gameid",gameName, 30);
+			setTimeout(function(){
+				window.location = 'gameSettings.php';
+			},500)
 			
-			window.location = 'gameSettings.php';
 		});
 		jqxhr.fail(function(){alert("Error posting game.")});
 		
