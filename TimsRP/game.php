@@ -21,7 +21,7 @@
 	$game = $_GET["gameid"];
 	
 	$sqlcheck = "SELECT * FROM games WHERE adminuserid='".$user."' AND gameid='".$game."'";
-	print_r($sqlcheck);
+	//print_r($sqlcheck);
 	
 	
 	$resultadmin = $conn->query($sqlcheck);
